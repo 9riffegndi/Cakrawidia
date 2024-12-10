@@ -1,0 +1,18 @@
+// src/Services/questionsService.js
+import axios from 'axios';
+
+const BASE_URL = 'https://cakrawidia-progress-adebf43bf30c.herokuapp.com/api';
+
+export const fetchQuestions = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}/questions`);
+    if (response.data) {
+      return response.data;
+    }
+    throw new Error("No data received");
+  } catch (error) {
+    console.error("Error fetching questions:", error);
+    throw new Error(error.response?.data?.message || error.message);
+  }
+};
+

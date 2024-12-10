@@ -20,7 +20,7 @@ const App = () => {
                     }
                 />
                 <Route
-                    path="/viewquestion/:id"
+                    path="/ViewQuestion/:id"
                     element={
                         <>
                             <Helmet>

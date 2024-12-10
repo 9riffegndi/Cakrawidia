@@ -1,4 +1,4 @@
-import ModalQuestions from "./ModalQuestions"
+import ModalQuestions from "../Questions/ModalQuestions";
 export default function Hero() {
     return (
         <>

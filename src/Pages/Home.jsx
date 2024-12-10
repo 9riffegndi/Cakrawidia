@@ -11,9 +11,9 @@ import Navbar from "../Partials/Navbar"
 import Footer from "../Partials/Footer"
 
 // Components
-import TopicsCategory from "../Components/TopicsCategory"
-import QuestionsListCard from "../Components/QuestionsListCard"
-import Leaderboard from "../Components/Leaderboard"
+import TopicsCategory from "../Components/Topics/TopicsCategory"
+import QuestionsListCard from "../Components/Questions/QuestionsListCard"
+import Leaderboard from "../Components/Leaderboard/Leaderboard";
 
 
 
