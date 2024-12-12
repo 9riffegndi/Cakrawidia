@@ -22,7 +22,7 @@ export default function ViewQuestion() {
     useEffect(() => {
         dayjs.locale("id");
         axios
-            .get(`https://cakrawidia-progress-adebf43bf30c.herokuapp.com/api/questions/${id}`)
+            .get(`https://cakrawidia-4ae06d46343e.herokuapp.com/api/questions/${id}`)
             .then((response) => {
                 setQuestion(response.data);
             })

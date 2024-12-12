@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"; // Mengimpor hook useState dan useE
 import { fetchQuestions } from "../Services/questionService"; // Mengimpor fungsi untuk mengambil data pertanyaan
 import { fetchTopics } from "../Services/topicService"; // Mengimpor fungsi untuk mengambil data topik
 
+
 const useFetchQuestions = () => {
   // Menyimpan state untuk daftar pertanyaan dan status loading
   const [questions, setQuestions] = useState([]); // Menyimpan data pertanyaan yang berhasil diambil
@@ -17,8 +18,6 @@ const useFetchQuestions = () => {
         const topicsRes = await fetchTopics(); // Mengambil data topik
 
         // Menampilkan response dari API untuk debugging
-        console.log("Questions Response:", questionsRes);
-        console.log("Topics Response:", topicsRes);
 
         // Menambahkan informasi topik dan nama pengguna pada setiap pertanyaan
         const enrichedQuestions = questionsRes.map((question) => {

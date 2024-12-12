@@ -43,12 +43,15 @@ const QuestionsListCard = ({ searchQuery }) => {
     return 0; // Jika tidak ada kriteria yang cocok, tidak mengubah urutan
   });
 
+  
   // Menyaring pertanyaan berdasarkan query pencarian
   const filteredQuestions = sortedQuestions.filter((question) =>
     question.title.toLowerCase().includes(searchQuery.toLowerCase()) || // Mencocokkan judul dengan query
     question.topic_name.toLowerCase().includes(searchQuery.toLowerCase()) || // Mencocokkan nama topik dengan query
     question.content.toLowerCase().includes(searchQuery.toLowerCase()) // Mencocokkan konten dengan query
   );
+
+
 
   // Jika sedang loading, tampilkan animasi loading
   if (loading) {
@@ -91,7 +94,7 @@ const QuestionsListCard = ({ searchQuery }) => {
               <a href="#" className="font-bold text-xs sm:text-sm hover:underline">
                 {question.topic_name}
               </a>
-              |
+              <span>|</span>
               <p className="font-bold text-sm">
                 {dayjs(question.created_at).fromNow()} {/* Menampilkan waktu relatif */}
               </p>

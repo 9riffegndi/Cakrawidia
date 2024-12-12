@@ -15,9 +15,9 @@ function TopicsList({ className = '', onTopicSelect }) {
   }
 
   if (error) {
-    return <p className="text-red-500">Error: {error}</p>;
+    return <p className="flex justify-center items-center  font-bold min-h-screen text-red-500">Error: {error}</p>;
   }
-
+  
   return (
     <ul className={`flex flex-col gap-2 ${className}`}>
       <h1 className="font-bold border-b-2 p-2 border-secondary/30">Topik</h1>

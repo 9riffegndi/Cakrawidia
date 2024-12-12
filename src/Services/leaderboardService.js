@@ -1,7 +1,7 @@
 // src/Services/leaderboardServices.js
 import axios from 'axios';
 
-const BASE_URL = 'https://cakrawidia-progress-adebf43bf30c.herokuapp.com/api';
+const BASE_URL = 'https://cakrawidia-4ae06d46343e.herokuapp.com/api';
 
 export const fetchUsers  = async () => {
   try {

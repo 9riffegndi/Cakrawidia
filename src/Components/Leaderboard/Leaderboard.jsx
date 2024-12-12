@@ -20,7 +20,7 @@ function Leaderboard() {
   }
 
   if (error) {
-    return <div>{error}</div>;
+    return <p className="flex justify-center items-center  col-span-12 md:col-span-3   font-bold min-h-screen text-red-500">Error: {error}</p>;
   }
 
   return (
