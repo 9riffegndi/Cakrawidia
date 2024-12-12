@@ -1,16 +1,15 @@
 import React, { useState } from "react";
-import dayjs from "dayjs";
-import "dayjs/locale/id"; // Menggunakan bahasa Indonesia untuk format tanggal
-import relativeTime from "dayjs/plugin/relativeTime"; // Plugin untuk format waktu relatif
 import PrimaryButton from "../Buttons/PrimaryButton"; // Komponen button kustom
 import Hero from "../Hero/Hero"; // Komponen Hero yang kemungkinan menampilkan gambar atau banner
 import { Link } from "react-router-dom"; // Untuk navigasi ke halaman lain menggunakan React Router
 import useFetchQuestions from "../../Hooks/useFetchQuestions"; // Hook untuk mengambil data pertanyaan
 
-// Mengaktifkan plugin relativeTime pada dayjs untuk menampilkan waktu relatif (misalnya "2 jam yang lalu")
-dayjs.extend(relativeTime);
+import { localeTime } from "../../Utils/localeTime";
+import dayjs from "dayjs";
+
 
 const QuestionsListCard = ({ searchQuery }) => {
+
   const { questions, loading } = useFetchQuestions(); // Mengambil data pertanyaan menggunakan hook
   const [visibleCount, setVisibleCount] = useState(15); // Menyimpan jumlah pertanyaan yang ditampilkan
   const [sortBy, setSortBy] = useState("created_at"); // Menyimpan kriteria pengurutan (misalnya berdasarkan tanggal)
@@ -32,7 +31,7 @@ const QuestionsListCard = ({ searchQuery }) => {
   // Mengurutkan pertanyaan berdasarkan kriteria dan urutan
   const sortedQuestions = [...questions].sort((a, b) => {
     if (sortBy === "created_at") {
-      const dateA = dayjs(a.created_at); // Mengonversi tanggal menjadi objek dayjs
+      const dateA = dayjs(a.created_at); // Mengonversi tanggal menjadi 
       const dateB = dayjs(b.created_at);
       return sortOrder === "asc" ? dateA.diff(dateB) : dateB.diff(dateA);
     } else if (sortBy === "topic_name") {
@@ -96,19 +95,22 @@ const QuestionsListCard = ({ searchQuery }) => {
               </a>
               <span>|</span>
               <p className="font-bold text-sm">
-                {dayjs(question.created_at).fromNow()} {/* Menampilkan waktu relatif */}
+                {localeTime(question.created_at)} {/* Menampilkan waktu relatif */}
               </p>
             </div>
+
             <div className="flex flex-col gap-3">
               <Link to={`/viewquestion/${question.id}`} className="font-normal text-xl hover:underline">
                 {question.title} {/* Judul pertanyaan */}
               </Link>
             </div>
+
             <div className="flex w-full justify-end">
-              <Link to={`/viewquestion/${question.id}`} className="btn btn-xs bg-transparent text-secondary">
+              <Link to={`/viewquestion/${question.id}`} >
                 <PrimaryButton label="Jawab" className="btn btn-xs bg-transparent text-secondary" /> {/* Tombol jawab */}
               </Link>
             </div>
+
           </div>
         ))
       ) : (

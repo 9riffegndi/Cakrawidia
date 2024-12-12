@@ -14,6 +14,8 @@ export default function Navbar({ onSearch }) {
     const [searchQuery, setSearchQuery] = useState("");
     const navigate = useNavigate();
 
+    const isAuthenticated = localStorage.getItem("authToken");
+
     const handleLogout = () => {
         localStorage.removeItem("authToken");
         navigate("/"); // Redirect ke halaman Home setelah logout
@@ -52,7 +54,7 @@ export default function Navbar({ onSearch }) {
                     onChange={handleSearchChange}
                 />
                 <div className="dropdown dropdown-end">
-                    {localStorage.getItem("authToken") ? (
+                    {isAuthenticated ? (
                         <div>
                             <div tabIndex="0" role="button" className="btn btn-ghost btn-circle avatar">
                                 <div className="w-10 rounded-full">

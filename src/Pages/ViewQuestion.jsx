@@ -1,18 +1,24 @@
+
+
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Helmet } from "react-helmet";
-import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
-import "dayjs/locale/id";
 
+// Utils
+import {localeTime} from "../Utils/localeTime"; 
+
+// Layouts
 import MainLayout from "../Layouts/MainLayout";
 import GridLayout from "../Layouts/GridLayout";
+
+// Partials
 import Navbar from "../Partials/Navbar";
 import Footer from "../Partials/Footer";
+
+// Components
 import LabelButton from "../Components/Buttons/LabelButton";
 
-dayjs.extend(relativeTime);
 
 export default function ViewQuestion() {
     const { id } = useParams(); // Ambil ID dari URL menggunakan React Router DOM
@@ -20,7 +26,6 @@ export default function ViewQuestion() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        dayjs.locale("id");
         axios
             .get(`https://cakrawidia-4ae06d46343e.herokuapp.com/api/questions/${id}`)
             .then((response) => {
@@ -55,10 +60,12 @@ export default function ViewQuestion() {
     return (
         
         <MainLayout>
+            
             <Helmet>
                 <title>{question.title} - Cakrawidia</title>
                 <meta name="description" content={question.content} />
             </Helmet>
+            
             <Navbar />
             <GridLayout>
                 {/* Kolom utama */}
@@ -77,7 +84,7 @@ export default function ViewQuestion() {
                             <span>|</span>
                             <p className="font-semibold">{question.topic?.name || "Tidak diketahui"}</p>
                             <span>|</span>
-                            <p className="font-semibold">{dayjs(question.created_at).fromNow()}</p>
+                            <p className="font-semibold">{localeTime(question.created_at)}</p>
                         </div>
                         <h1 className="font-bold text-2xl">{question.title}</h1>
                         <p className="text-lg">{question.content}</p>
@@ -134,6 +141,7 @@ export default function ViewQuestion() {
                     </div>
                 </div>
             </GridLayout>
+            
             <Footer />
         </MainLayout>
     );
