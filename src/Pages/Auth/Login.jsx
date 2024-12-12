@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
 
 // Components
 import Form from "../../Components/Form";
@@ -17,12 +16,28 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
+    const [rememberMe, setRememberMe] = useState(true);
 
-    const navigate = useNavigate(); // Initialize useNavigate
+    const navigate = useNavigate();
+
+    // Cek token saat komponen pertama kali di-render
+    useEffect(() => {
+        const token = localStorage.getItem("authToken");
+        if (token) {
+            // Jika token ditemukan, redirect ke halaman utama
+            navigate("/");
+        }
+    }, [navigate]);
 
     const handleLogin = async (e) => {
         e.preventDefault();
         setError("");
+
+        if (!email || !password) {
+            setError("Email dan password wajib diisi.");
+            return;
+        }
+
         setLoading(true);
 
         try {
@@ -32,61 +47,98 @@ const Login = () => {
             );
 
             // Simpan token di localStorage
-            localStorage.setItem("authToken", response.data.token);
+            const token = localStorage.setItem("authToken", response.data.token);
+
+            // Simpan email dan password jika rememberMe aktif
+            if (rememberMe) {
+                localStorage.setItem("userEmail", email);
+                localStorage.setItem("userPassword", password);
+            } else {
+                localStorage.removeItem("userEmail");
+                localStorage.removeItem("userPassword");
+            }
 
             // Arahkan ke halaman Home
             navigate("/");
+
+            if(token !== null){
+                console.log(token);
+            }
+
         } catch (err) {
-            setError("Email atau password yang anda masukan salah. Coba lagi");
+            if (err.response && err.response.data && err.response.data.message) {
+                setError(err.response.data.message);
+            } else {
+                setError("Email atau password yang anda masukan salah. Coba lagi");
+            }
         } finally {
             setLoading(false);
         }
     };
 
+    useEffect(() => {
+        try {
+            const savedEmail = localStorage.getItem("userEmail");
+            const savedPassword = localStorage.getItem("userPassword");
+
+            if (savedEmail) setEmail(savedEmail);
+            if (savedPassword) setPassword(savedPassword);
+        } catch (err) {
+            console.error("Gagal mengambil data dari localStorage:", err);
+        }
+    }, []);
+
     return (
         <AuthLayout
             title={"Selamat datang Kembali :)"}
-            description={"Masukan email dan password untuk Login"}>
-        
-            <Form
-                onSubmit={handleLogin}
-                className="flex flex-col gap-2 rounded  w-[400px] ">
+            description={"Masukan email dan password untuk Login"}
+        >
+            <Form onSubmit={handleLogin} className="flex flex-col gap-2 rounded w-[400px]">
                 {error && (
-                    <div role="alert" class="alert alert-error">
+                    <div role="alert" className="alert alert-error">
                         <span className="text-xs">{error}</span>
                     </div>
                 )}
 
                 <InputPost
                     label="Email"
-                    placeholder={'Masukan email'}
-                    type={'email'}
+                    placeholder={"Masukan email"}
+                    type={"email"}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                >
-                </InputPost>
-
+                />
 
                 <InputPost
-                    label={'Password'}
-                    placeholder={'Masukan password'}
-                    type={'password'}
+                    label={"Password"}
+                    placeholder={"Masukan password"}
+                    type={"password"}
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}>
-                </InputPost>
+                    onChange={(e) => setPassword(e.target.value)}
+                />
 
                 <PrimaryButton
                     type="submit"
                     label={loading ? "Loading..." : "Masuk"}
-                    className={'btn w-full'}>
-                </PrimaryButton>
-            </Form>
-                <div className="flex items-center gap-2">
-                    <p>Belum punya akun?</p>
-                    <Link className="link font-bold" to="/register">
-                        Daftar
+                    className={"btn w-full"}
+                />
+
+                <div className="flex justify-between items-center gap-2">
+                    <div className="form-control">
+                        <label className="label cursor-pointer flex gap-2">
+                            <span className="label-text">Ingat saya</span>
+                            <input
+                                type="checkbox"
+                                checked={rememberMe}
+                                onChange={(e) => setRememberMe(e.target.checked)}
+                                className="checkbox"
+                            />
+                        </label>
+                    </div>
+                    <Link to="/register">
+                        Belum punya akun? <span className="link font-bold"> Daftar</span>
                     </Link>
                 </div>
+            </Form>
         </AuthLayout>
     );
 };

@@ -5,7 +5,7 @@ const PrimaryButton = ({ label,src, onClick, className = '', type = 'button' }) 
     <button
       type={type}
       onClick={onClick}
-      className={`flex items-center justify-center btn-outline  bg-secondary text-primary rounded-full font-bold ${className}`}
+      className={`flex items-center text-primary justify-center btn-neutral rounded-full font-bold ${className}`}
     >
       {src && <img src={src} className="p-1" />}
       {label}

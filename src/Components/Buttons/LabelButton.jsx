@@ -6,7 +6,7 @@ const LabelButton = ({ src, label, htmlFor,  ariaLabel, id='', className = '', o
       htmlFor={htmlFor}
       aria-label={ariaLabel}
       id={id}
-      className={`flex items-center justify-center gap-2 btn-outline bg-secondary text-primary rounded-full font-bold ${className}`}
+      className={`flex items-center justify-center gap-2 btn-neutral text-primary rounded-full font-bold ${className}`}
       onClick={onClick}
     >
       {src && <img src={src} alt={alt} className="p-1" />}

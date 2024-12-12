@@ -1,10 +1,7 @@
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-
 import ApplicationLogo from "./ApplicationLogo";  
-
 import LabelButton from "../Components/Buttons/LabelButton"; 
 import Sidebar from "./Sidebar";
 import SearchInput from "../Components/SearchInput";
@@ -12,16 +9,47 @@ import PrimaryButton from "../Components/Buttons/PrimaryButton";
 
 export default function Navbar({ onSearch }) {
     const [searchQuery, setSearchQuery] = useState("");
+    const [userName, setUserName] = useState(null); // Untuk menyimpan nama pengguna
     const navigate = useNavigate();
 
     const isAuthenticated = localStorage.getItem("authToken");
+
+    // Ambil profil pengguna jika token ada
+    useEffect(() => {
+        if (isAuthenticated) {
+            fetchProfile();
+        }
+    }, [isAuthenticated]);
+
+    const fetchProfile = async () => {
+        try {
+            const response = await fetch("https://cakrawidia-4ae06d46343e.herokuapp.com/api/me", {
+                method: "GET",
+                headers: {
+                    "Authorization": `Bearer ${isAuthenticated}`,
+                    "Content-Type": "application/json",
+                },
+            });
+
+            const data = await response.json();
+            if (data.user) {
+                setUserName(data.user.username); // Set nama pengguna jika berhasil
+            }
+        } catch (error) {
+            console.error("Error fetching profile:", error);
+        }
+    };
+
+    const formatUserName = (name) => {
+        if (!name) return "";
+        return name.length > 5 ? `${name.charAt(0)}${name.charAt(name.length - 1)}` : name;
+    };
 
     const handleLogout = () => {
         localStorage.removeItem("authToken");
         navigate("/"); // Redirect ke halaman Home setelah logout
     };
 
-    
     const handleSearchChange = (e) => {
         const query = e.target.value;
         setSearchQuery(query);
@@ -32,6 +60,7 @@ export default function Navbar({ onSearch }) {
         <div className="sticky shadow-md top-0 z-20 navbar bg-base-100">
             <div className="flex justify-between w-full gap-1">
                 <ApplicationLogo />
+                
                 <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
                 <LabelButton
                     htmlFor="my-drawer-4"
@@ -46,6 +75,8 @@ export default function Navbar({ onSearch }) {
                     />
                     <Sidebar />
                 </div>
+
+
                 <SearchInput
                     type="text"
                     placeholder="Search"
@@ -56,13 +87,9 @@ export default function Navbar({ onSearch }) {
                 <div className="dropdown dropdown-end">
                     {isAuthenticated ? (
                         <div>
-                            <div tabIndex="0" role="button" className="btn btn-ghost btn-circle avatar">
-                                <div className="w-10 rounded-full">
-                                    <img
-                                        alt="Avatar"
-                                        src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                                    />
-                                </div>
+                            <div tabIndex="0" role="button" className="flex gap-1 font-bold  justify-center items-center">
+                                <h1 className="text-5xl">Hi</h1> 
+                                <span className="btn btn-circle btn-md btn-neutral "> {formatUserName(userName)}</span>
                             </div>
                             <ul
                                 tabIndex="0"
@@ -77,17 +104,13 @@ export default function Navbar({ onSearch }) {
                         </div>
                     ) : (
                         <div className="flex items-center">
-                            <Link
-                                to={'/login'}
-                            >
+                            <Link to={'/login'}>
                                 <PrimaryButton
                                     label={'Login'}
                                     className="btn"
                                 />
                             </Link>
-                            <Link
-                                to={'/register'}
-                            >
+                            <Link to={'/register'}>
                                 <PrimaryButton
                                     label={'Register'}
                                     className="btn"

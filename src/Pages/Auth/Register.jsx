@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -12,7 +12,7 @@ import PrimaryButton from "../../Components/Buttons/PrimaryButton";
 import AuthLayout from "../../Layouts/AuthLayout";
 
 const Register = () => {
-    const [name, setName] = useState("");
+    const [username, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [password_confirmation, setpassword_confirmation] = useState("");
@@ -20,7 +20,15 @@ const Register = () => {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
 
-    const navigate = useNavigate(); // Initialize useNavigate
+    const navigate = useNavigate();
+
+    // Check if token exists in localStorage, if it does, redirect to home
+    useEffect(() => {
+        const token = localStorage.getItem("authToken");
+        if (token) {
+            navigate("/"); // Redirect to home if the user is already logged in
+        }
+    }, [navigate]);
 
     const handleRegister = async (e) => {
         e.preventDefault();
@@ -32,7 +40,7 @@ const Register = () => {
             const response = await axios.post(
                 "https://cakrawidia-4ae06d46343e.herokuapp.com/register",
                 { 
-                    name, 
+                    username, 
                     email, 
                     password, 
                     password_confirmation
@@ -42,6 +50,7 @@ const Register = () => {
             localStorage.setItem("authToken", response.data.token);
             // Arahkan ke halaman Home
             navigate("/");
+
         } catch (err) {
             // Cek error dari respons server
             if (err.response && err.response.data) {
@@ -62,18 +71,18 @@ const Register = () => {
             <Form
                 onSubmit={handleRegister}
                 className="flex flex-col gap-2 rounded  w-[400px] ">
-                
+
                 {error && (
                     <div role="alert" className="alert alert-error">
                         <span className="text-xs">{error}</span>
                     </div>
                 )}
-                
+
                 <InputPost
                     label="Username"
                     placeholder={'Masukan nama'}
                     type={'text'}
-                    value={name}
+                    value={username}
                     onChange={(e) => setName(e.target.value)} // Perbaikan: setName, bukan setEmail
                 />
 
@@ -114,7 +123,6 @@ const Register = () => {
                     Masuk
                 </Link>
             </div>
-            
         </AuthLayout>
     );
 };

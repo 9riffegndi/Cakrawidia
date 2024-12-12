@@ -34,7 +34,7 @@ function Leaderboard() {
                 <span
                   className={`btn-md btn btn-circle hover:btn-lg transition-all ease-in duration-100 flex items-center justify-center rounded-full ${
                     index >= 0 && index <= 2
-                      ? 'bg-yellow-400 text-primary cursor-default hover:text-2xl hover:animate-pulse hover:bg-yellow-300'
+                      ? 'bg-neutral text-primary cursor-default hover:text-2xl hover:animate-pulse hover:bg-yellow-300'
                       : ''
                   }`}
                 >

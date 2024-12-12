@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom"; // Untuk navigasi ke halaman lain menggunakan React Router
+
 import PrimaryButton from "../Buttons/PrimaryButton"; // Komponen button kustom
 import Hero from "../Hero/Hero"; // Komponen Hero yang kemungkinan menampilkan gambar atau banner
-import { Link } from "react-router-dom"; // Untuk navigasi ke halaman lain menggunakan React Router
+
 import useFetchQuestions from "../../Hooks/useFetchQuestions"; // Hook untuk mengambil data pertanyaan
 
 import { localeTime } from "../../Utils/localeTime";
@@ -114,10 +116,11 @@ const QuestionsListCard = ({ searchQuery }) => {
           </div>
         ))
       ) : (
-        <div className="flex min-h-44 flex-col justify-center items-center p-5">
-          <p className=" text-center text-lg">
-            Tidak ada hasil dari "<span className="font-bold">{searchQuery}</span>" {/* Jika tidak ada hasil */}
-          </p>
+        <div className="gap-10 w-full flex flex-col justify-center items-center p-5">
+          <img className="w-1/3" src="/Assets/Img/no-results.png" />
+          <h1 className=" text-center text-xl font-bold">
+            Tidak ada pertanyaan yang cocok
+          </h1>
         </div>
       )}
       {/* Menampilkan tombol "Lihat semua" jika ada lebih banyak pertanyaan untuk ditampilkan */}
