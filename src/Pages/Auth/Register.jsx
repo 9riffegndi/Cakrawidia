@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 // Components
 import Form from "../../Components/Form";
@@ -106,6 +107,14 @@ const Register = () => {
                     className={'btn w-full'}>
                 </PrimaryButton>
             </Form>
+            
+            <div className="flex items-center  gap-2">
+                <p>Belum punya akun?</p>
+                <Link className="link font-bold" to="/login">
+                    Masuk
+                </Link>
+            </div>
+            
         </AuthLayout>
     );
 };
