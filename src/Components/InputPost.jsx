@@ -2,14 +2,14 @@ import React from 'react';
 
 export default function InputPost({label='',placeholder= '', classname = '', type = 'text', value, onChange }) {
   return (
-    <div className='flex justify-center items-start flex-col gap-3'>
-        <h1>{label}</h1>
+    <div className='flex justify-center items-start flex-col gap-1'>
+        <h1 className='ml-3'>{label}</h1>
         <input
             placeholder={placeholder}
             type={type}
             value={value}
             onChange={onChange}
-            className={`w-full border input-md rounded-full  ${classname}`}
+            className={`w-full border input-md border-secondary focus:bg-slate-200 rounded-full  ${classname}`}
             required
         />
     </div>

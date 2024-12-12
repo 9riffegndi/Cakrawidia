@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet";
 import Home from "./Pages/Home";
 import ViewQuestion from "./Pages/ViewQuestion";
 import Login from "./Pages/Auth/Login";
+import Register from "./Pages/Auth/Register";
 
 const App = () => {
     return (
@@ -39,6 +40,18 @@ const App = () => {
                                 <title>Login - Cakrawidia</title>
                             </Helmet>
                             <Login />
+                        </>
+                    }
+                />
+
+                <Route
+                    path="/register"
+                    element={
+                        <>
+                            <Helmet>
+                                <title>Login - Cakrawidia</title>
+                            </Helmet>
+                            <Register />
                         </>
                     }
                 />
