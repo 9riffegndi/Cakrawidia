@@ -3,8 +3,12 @@ import { useNavigate } from "react-router-dom"; // Import useNavigate
 import axios from "axios";
 
 // Components
+import Form from "../../Components/Form";
+import InputPost from "../../Components/InputPost";
 import PrimaryButton from "../../Components/Buttons/PrimaryButton";
 
+// Layouts
+import AuthLayout from "../../Layouts/AuthLayout";
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -31,53 +35,51 @@ const Login = () => {
             // Arahkan ke halaman Home
             navigate("/");
         } catch (err) {
-            setError("Invalid email or password. Please try again.");
+            setError("Email atau password yang anda masukan salah. Coba lagi");
         } finally {
             setLoading(false);
         }
     };
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-100">
-            <form
+        <AuthLayout
+            title={"Selamat datang Kembali :)"}
+            description={"Masukan email dan password untuk Login"}>
+        
+            <Form
                 onSubmit={handleLogin}
-                className="bg-white p-6 rounded shadow-md w-full max-w-sm"
-            >
-                <h1 className="text-2xl font-bold mb-4">Login</h1>
+                className="flex flex-col gap-2 rounded  w-[400px] ">
                 {error && (
-                    <div className="text-red-500 text-sm mb-4" role="alert">
-                        {error}
+                    <div role="alert" class="alert alert-error">
+                        <span className="text-xs">{error}</span>
                     </div>
                 )}
-                <div className="mb-4">
-                    <label className="block text-sm font-medium mb-2">Email</label>
-                    <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="w-full px-4 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
-                        required
-                    />
-                </div>
-                <div className="mb-4">
-                    <label className="block text-sm font-medium mb-2">Password</label>
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        className="w-full px-4 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
-                        required
-                    />
-                </div>
+
+                <InputPost
+                    label="Email"
+                    placeholder={'Masukan email'}
+                    type={'email'}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                >
+                </InputPost>
+
+
+                <InputPost
+                    label={'Password'}
+                    placeholder={'Masukan password'}
+                    type={'password'}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}>
+                </InputPost>
+
                 <PrimaryButton
                     type="submit"
-                    label={loading ? "Logging in..." : "Login"}
-                    className={'btn w-full'}
-                    >
-                        {loading ? "Logging in..." : "Login"}
-                    </PrimaryButton>
-            </form>
-        </div>
+                    label={loading ? "Loading..." : "Masuk"}
+                    className={'btn w-full'}>
+                </PrimaryButton>
+            </Form>
+        </AuthLayout>
     );
 };
 
