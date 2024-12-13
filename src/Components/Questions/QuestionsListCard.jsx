@@ -93,7 +93,7 @@ const QuestionsListCard = ({ searchQuery }) => {
           <div key={question.id} className="w-full flex flex-col justify-between border-b-2 min-h-[200px] gap-4 p-5">
             <div className="flex gap-1 justify-start items-center">
               <span className="btn btn-circle btn-neutral text-primary">
-                {formatUserName(users.find((user) => user.id === question.user_id).username)}
+                {formatUserName(users.username)}
               </span>
               <a href="#" className="font-bold hidden xs:block text-xs hover:underline">
                 {question.topic_name}
