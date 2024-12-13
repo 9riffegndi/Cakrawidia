@@ -102,9 +102,9 @@ const QuestionsListCard = ({ searchQuery }) => {
             </div>
 
             <div className="flex flex-col gap-3">
-              <Link to={`/viewquestion/${question.id}`} className="text-xl flex flex-col gap-2 hover:underline">
-                  <p className="font-bold text-2xl">{question.title}</p>
-                  <p>{question.content}</p>
+              <Link to={`/viewquestion/${question.id}`} className="flex flex-col gap-2 hover:underline">
+                  <blockquote className=" cursor-pointer font-bold text-2xl p-0 ">{question.title} </blockquote>
+                  <textarea className="textarea cursor-pointer p-0 border-none  text-xl min-h-[100px]  resize-none">{question.content}</textarea>
               </Link>
             </div>
 
