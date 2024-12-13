@@ -63,9 +63,9 @@ export default function Navbar({ onSearch }) {
 
     return (
 
-        <div className="flex flex-col  gap-1  p-2 w-full">
+        <div className="flex flex-col  gap-1 z-10 p-2 rounded-b-lg shadow  sticky top-0  bg-white w-full">
 
-        <div className="flex justify-between sm:grid xs:grid-cols-12 sticky top-0 z-10 bg-white w-full p-2">
+        <div className="flex justify-between md:grid xs:grid-cols-12  w-full p-2">
                 
                 <ApplicationLogo className="col-span-3" />
                 
@@ -89,13 +89,13 @@ export default function Navbar({ onSearch }) {
                 <SearchInput
                     type="text"
                     placeholder="Search"
-                    className="input sm:block hidden input-bordered col-span-8 md:col-span-6 rounded-full w-full"
+                    className="input md:block hidden input-bordered col-span-8 md:col-span-6 rounded-full w-full"
                     value={searchQuery}
                     onChange={handleSearchChange}
                 />
 
 
-                <div className="dropdown col-span-3  flex items-center justify-end dropdown-end">
+                <div className="dropdown  col-span-3  flex items-center justify-end dropdown-end">
                     {isAuthenticated ? (
                         <div>
                             <div 
@@ -105,11 +105,13 @@ export default function Navbar({ onSearch }) {
                             >
                                 {isLoading ? (
                                     <div className=" rounded-xl flex gap-1 items-center justify-between">
+                                        <span className="w-[140px] h-[20px] rounded-full  animate-pulse bg-gray-200" />
                                         <span className="btn btn-circle animate-pulse bg-gray-200" />
                                     </div>
                                 ) : (
                                     <div className="justify-center  gap-1 flex items-center">
-                                        <h1 className="font-extrabold text-4xl lg:font-normal lg:text-lg">Hi</h1> 
+                                        <h1 className="hidden xs:block">Hi</h1>
+                                        <span className="block md:hidden font-bold  lg:block ">{userName}</span>
                                         <span className="btn btn-circle btn-neutral text-primary">
                                             {formatUserName(userName)}
                                         </span>
@@ -149,7 +151,7 @@ export default function Navbar({ onSearch }) {
             <SearchInput
                     type="text"
                     placeholder="Search"
-                    className="input input-bordered block sm:hidden col-span-8 md:col-span-6 rounded-full w-full"
+                    className="input input-bordered block md:hidden col-span-8 md:col-span-6 rounded-full w-full"
                     value={searchQuery}
                     onChange={handleSearchChange}
             />

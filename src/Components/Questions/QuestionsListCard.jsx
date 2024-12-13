@@ -92,19 +92,19 @@ const QuestionsListCard = ({ searchQuery }) => {
                   />
                 </div>
               </div>
-              <a href="#" className="font-bold text-xs sm:text-sm hover:underline">
+              <a href="#" className="font-bold hidden xs:block text-xs hover:underline">
                 {question.topic_name}
               </a>
               <span>|</span>
-              <p className="font-bold text-sm">
+              <p className="font-bold hidden xs:block text-xs">
                 {localeTime(question.created_at)} {/* Menampilkan waktu relatif */}
               </p>
             </div>
 
             <div className="flex flex-col gap-3">
               <Link to={`/viewquestion/${question.id}`} className="flex flex-col gap-2 hover:underline">
-                  <textarea className="textarea cursor-pointer text-2xl font-bold p-0 border-none resize-none">{question.title}</textarea>
-                  <textarea className="textarea cursor-pointer p-0 border-none  text-xl min-h-[100px]  resize-none">{question.content}</textarea>
+                  <textarea className="textarea cursor-pointer text-xs xs:text-xl font-bold p-0 border-none resize-none">{question.title}</textarea>
+                  <textarea className="textarea cursor-pointer p-0 border-none text-xs xs:text-xl  min-h-[200px]  resize-none">{question.content}</textarea>
               </Link>
             </div>
 

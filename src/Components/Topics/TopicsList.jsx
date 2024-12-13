@@ -8,7 +8,7 @@ function TopicsList({ className = '', onTopicSelect }) {
 
   if (loading) {
     return (
-      <div className={`animate-pulse col-span-12 hidden md:flex md:col-span-3 rounded-xl justify-center items-center bg-gray-200 min-h-screen ${className}`}>
+      <div className={`animate-pulse col-span-12 hidden md:flex  md:col-span-3 rounded-xl justify-center items-center bg-gray-200 min-h-screen ${className}`}>
         <span className="loading loading-infinity loading-lg"></span>
       </div>
     );
