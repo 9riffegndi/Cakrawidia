@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 import PrimaryButton from "../Buttons/PrimaryButton"; 
 import Hero from "../Hero/Hero"; 
 
-import useFetchQuestions from "../../Hooks/useFetchQuestions"; 
+import useFetchQuestions from "../../Hooks/useFetchQuestions"; // 
+import useUsers from '../../Hooks/useUsers';
+
 
 import { localeTime } from "../../Utils/localeTime";
 import dayjs from "dayjs";
@@ -12,7 +14,7 @@ import { name } from "dayjs/locale/id";
 
 
 const QuestionsListCard = ({ searchQuery }) => {
-
+  const { users } = useUsers();
   const { questions, loading } = useFetchQuestions(); // Mengambil data pertanyaan menggunakan hook
   const [visibleCount, setVisibleCount] = useState(5); // Menyimpan jumlah pertanyaan yang ditampilkan
   const [sortBy, setSortBy] = useState("created_at"); // Menyimpan kriteria pengurutan (misalnya berdasarkan tanggal)
@@ -91,7 +93,7 @@ const QuestionsListCard = ({ searchQuery }) => {
           <div key={question.id} className="w-full flex flex-col justify-between border-b-2 min-h-[200px] gap-4 p-5">
             <div className="flex gap-1 justify-start items-center">
               <span className="btn btn-circle btn-neutral text-primary">
-                {formatUserName(name)}
+                {formatUserName(users.find((user) => user.id === question.user_id).username)}
               </span>
               <a href="#" className="font-bold hidden xs:block text-xs hover:underline">
                 {question.topic_name}

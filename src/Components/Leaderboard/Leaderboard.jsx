@@ -23,6 +23,12 @@ function Leaderboard() {
     return <p className="flex justify-center items-center  col-span-12 md:col-span-3   font-bold min-h-screen text-red-500">Error: {error}</p>;
   }
 
+  const formatUserName = (name) => {
+    if (!name) return "";
+    return name.length > 4 ? `${name.charAt(0)}${name.charAt(name.length - 1)}` : name;
+  };
+
+
   return (
     <div className="col-span-12 md:col-span-3 p-2 border-secondary border rounded-xl">
       <div className="flex gap-1 justify-start rounded-t  p-2 items-center border-b border-secondary">
@@ -43,10 +49,11 @@ function Leaderboard() {
                 >
                   {index + 1}
                 </span>
+                <p className='btn btn-circle text-primary btn-neutral'>{formatUserName(user.username)}</p>
                 <p className="flex flex-col items-start justify-center">
                   <span>{user.username}</span>
                   <span>
-                    <span className="text-xs text-secondary/70">{user.points}</span>
+                    <span className="text-xs badge badge-sm badge-warning ">{user.points}</span>
                   </span>
                 </p>
               </td>
