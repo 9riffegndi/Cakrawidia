@@ -62,10 +62,14 @@ export default function Navbar({ onSearch }) {
     };
 
     return (
-        <div className="sticky shadow rounded-b-lg top-0 z-20 navbar bg-base-100">
-            <div className="flex justify-between w-full">
-                <ApplicationLogo />
+
+        <div className="flex flex-col  gap-1  p-2 w-full">
+
+        <div className="flex justify-between sm:grid xs:grid-cols-12 sticky top-0 z-10 bg-white w-full p-2">
                 
+                <ApplicationLogo className="col-span-3" />
+                
+
                 <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
                 <LabelButton
                     htmlFor="my-drawer-4"
@@ -85,11 +89,13 @@ export default function Navbar({ onSearch }) {
                 <SearchInput
                     type="text"
                     placeholder="Search"
-                    className="input input-bordered rounded-full w-full"
+                    className="input sm:block hidden input-bordered col-span-8 md:col-span-6 rounded-full w-full"
                     value={searchQuery}
                     onChange={handleSearchChange}
                 />
-                <div className="dropdown dropdown-end">
+
+
+                <div className="dropdown col-span-3  flex items-center justify-end dropdown-end">
                     {isAuthenticated ? (
                         <div>
                             <div 
@@ -138,7 +144,16 @@ export default function Navbar({ onSearch }) {
                         </div>
                     )}
                 </div>
-            </div>
+        </div>
+
+            <SearchInput
+                    type="text"
+                    placeholder="Search"
+                    className="input input-bordered block sm:hidden col-span-8 md:col-span-6 rounded-full w-full"
+                    value={searchQuery}
+                    onChange={handleSearchChange}
+            />
+
         </div>
     );
 }

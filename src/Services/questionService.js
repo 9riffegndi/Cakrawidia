@@ -5,7 +5,7 @@ const BASE_URL = 'https://cakrawidia-4ae06d46343e.herokuapp.com/api';
 
 export const fetchQuestions = async () => {
   try {
-    const response = await axios.get(`${BASE_URL}/questions`);
+    const response = await axios.get(`${BASE_URL}/questions?limit=5`);
     if (response.data) {
       return response.data;
     }

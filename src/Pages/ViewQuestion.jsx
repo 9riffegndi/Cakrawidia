@@ -13,7 +13,6 @@ import MainLayout from "../Layouts/MainLayout";
 import GridLayout from "../Layouts/GridLayout";
 
 // Partials
-import Navbar from "../Partials/Navbar";
 import Footer from "../Partials/Footer";
 
 // Components

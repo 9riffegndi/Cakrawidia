@@ -13,13 +13,13 @@ import dayjs from "dayjs";
 const QuestionsListCard = ({ searchQuery }) => {
 
   const { questions, loading } = useFetchQuestions(); // Mengambil data pertanyaan menggunakan hook
-  const [visibleCount, setVisibleCount] = useState(15); // Menyimpan jumlah pertanyaan yang ditampilkan
+  const [visibleCount, setVisibleCount] = useState(5); // Menyimpan jumlah pertanyaan yang ditampilkan
   const [sortBy, setSortBy] = useState("created_at"); // Menyimpan kriteria pengurutan (misalnya berdasarkan tanggal)
   const [sortOrder, setSortOrder] = useState("desc"); // Menyimpan urutan pengurutan (asc/desc)
 
   // Fungsi untuk menambah jumlah pertanyaan yang ditampilkan
   const loadMore = () => {
-    setVisibleCount((prevCount) => prevCount + 10);
+    setVisibleCount((prevCount) => prevCount + 5);
   };
 
   // Fungsi untuk mengubah kriteria dan urutan pengurutan
@@ -103,7 +103,7 @@ const QuestionsListCard = ({ searchQuery }) => {
 
             <div className="flex flex-col gap-3">
               <Link to={`/viewquestion/${question.id}`} className="flex flex-col gap-2 hover:underline">
-                  <blockquote className=" cursor-pointer font-bold text-2xl p-0 ">{question.title} </blockquote>
+                  <textarea className="textarea cursor-pointer text-2xl font-bold p-0 border-none resize-none">{question.title}</textarea>
                   <textarea className="textarea cursor-pointer p-0 border-none  text-xl min-h-[100px]  resize-none">{question.content}</textarea>
               </Link>
             </div>
