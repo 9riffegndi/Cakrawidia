@@ -102,8 +102,9 @@ const QuestionsListCard = ({ searchQuery }) => {
             </div>
 
             <div className="flex flex-col gap-3">
-              <Link to={`/viewquestion/${question.id}`} className="font-normal text-xl hover:underline">
-                {question.title} {/* Judul pertanyaan */}
+              <Link to={`/viewquestion/${question.id}`} className="text-xl flex flex-col gap-2 hover:underline">
+                  <p className="font-bold text-2xl">{question.title}</p>
+                  <p>{question.content}</p>
               </Link>
             </div>
 

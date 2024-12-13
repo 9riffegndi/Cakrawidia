@@ -1,9 +1,9 @@
 import React from "react";
 
-const Textarea = ({ value, onChange, placeholder }) => {
+const Textarea = ({ value, onChange, placeholder, className="" }) => {
   return (
     <textarea
-      className="textarea textarea-bordered resize-none min-h-[200px] rounded-md w-full mt-5"
+      className={`textarea textarea-bordered resize-none rounded-md w-full ${className}`}
       value={value}
       onChange={onChange}
       placeholder={placeholder}

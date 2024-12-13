@@ -118,7 +118,7 @@ const Register = () => {
             </Form>
             
             <div className="flex items-center  gap-2">
-                <p>Belum punya akun?</p>
+                <p>Sudah punya akun?</p>
                 <Link className="link font-bold" to="/login">
                     Masuk
                 </Link>

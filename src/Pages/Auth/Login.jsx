@@ -122,20 +122,22 @@ const Login = () => {
                     className={"btn w-full"}
                 />
 
-                <div className="flex justify-between items-center gap-2">
+                <div className="flex justify-between  text-sm items-center gap-1">
                     <div className="form-control">
-                        <label className="label cursor-pointer flex gap-2">
-                            <span className="label-text">Ingat saya</span>
-                            <input
-                                type="checkbox"
-                                checked={rememberMe}
-                                onChange={(e) => setRememberMe(e.target.checked)}
-                                className="checkbox"
-                            />
-                        </label>
+                            <label className="label cursor-pointer gap-1 flex items-center ">
+                                <span className="font-bold text-xs">Ingat saya</span>
+                                <input
+                                    type="checkbox"
+                                    checked={rememberMe}
+                                    onChange={(e) => setRememberMe(e.target.checked)}
+                                    className="checkbox checkbox-xs"
+                                />
+                            </label>
                     </div>
-                    <Link to="/register">
-                        Belum punya akun? <span className="link font-bold"> Daftar</span>
+
+
+                    <Link to="/register" className="text-xs  flex  justify-between items-center">
+                        <span className="hidden lg:block"> Belum punya akun?</span> <span className="link font-bold"> Daftar</span>
                     </Link>
                 </div>
             </Form>

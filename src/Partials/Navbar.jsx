@@ -15,13 +15,6 @@ export default function Navbar({ onSearch }) {
 
     const isAuthenticated = localStorage.getItem("authToken");
 
-    // Ambil profil pengguna jika token ada
-    useEffect(() => {
-        if (isAuthenticated) {
-            fetchProfile();
-        }
-    }, [isAuthenticated]);
-
     const fetchProfile = async () => {
         setIsLoading(true); // Mulai loading
         try {
@@ -43,6 +36,14 @@ export default function Navbar({ onSearch }) {
             setIsLoading(false); // Selesai loading
         }
     };
+
+    // Ambil profil pengguna jika token ada
+    useEffect(() => {
+        if (isAuthenticated) {
+            fetchProfile();
+        }
+    }, [isAuthenticated]);
+
 
     const formatUserName = (name) => {
         if (!name) return "";
@@ -97,14 +98,12 @@ export default function Navbar({ onSearch }) {
                                 className="flex gap-1 justify-center items-center"
                             >
                                 {isLoading ? (
-                                    <div className=" rounded-xl flex gap-1 w-[200px] items-center justify-between">
-                                        <h1 className="bg-gray-300 animate-pulse rounded-xl w-[200px] h-10"></h1>
+                                    <div className=" rounded-xl flex gap-1 items-center justify-between">
                                         <span className="btn btn-circle animate-pulse bg-gray-200" />
                                     </div>
                                 ) : (
                                     <div className="justify-center  gap-1 flex items-center">
                                         <h1 className="font-extrabold text-4xl lg:font-normal lg:text-lg">Hi</h1> 
-                                        <p className="font-bold hidden lg:block">{userName}</p>
                                         <span className="btn btn-circle btn-neutral text-primary">
                                             {formatUserName(userName)}
                                         </span>

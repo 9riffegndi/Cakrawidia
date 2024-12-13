@@ -25,7 +25,7 @@ function TopicsList({ className = '', onTopicSelect }) {
       {topics.map((topic) => (
         <li className="p-2 rounded-md hover:bg-secondary/10" key={topic.id}>
           <PrimaryButton
-            onClick={() => onTopicSelect(topic.id)}
+            onClick={() => alert(topic.id)}
             className="bg-transparent hover:bg-transparent text-secondary hover:text-secondary"
             label={topic.name}
           />
