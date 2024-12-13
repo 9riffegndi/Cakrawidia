@@ -20,8 +20,7 @@ function TopicsList({ className = '', onTopicSelect }) {
   
   return (
     <ul className={`flex flex-col gap-2 ${className}`}>
-      <h1 className="font-bold border-b-2 p-2 border-secondary/30">Topik</h1>
-      <h1 className="bg-secondary text-primary p-2 font-bold rounded-md">Semua topik</h1>
+      <h1 className="font-bold p-2 border-b border-secondary bg-neutral text-primary rounded-t">Topik</h1>
       {topics.map((topic) => (
         <li className="p-2 rounded-md hover:bg-secondary/10" key={topic.id}>
           <PrimaryButton

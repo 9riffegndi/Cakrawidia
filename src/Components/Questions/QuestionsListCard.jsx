@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom"; // Untuk navigasi ke halaman lain menggunakan React Router
+import { Link } from "react-router-dom"; 
 
-import PrimaryButton from "../Buttons/PrimaryButton"; // Komponen button kustom
-import Hero from "../Hero/Hero"; // Komponen Hero yang kemungkinan menampilkan gambar atau banner
+import PrimaryButton from "../Buttons/PrimaryButton"; 
+import Hero from "../Hero/Hero"; 
 
-import useFetchQuestions from "../../Hooks/useFetchQuestions"; // Hook untuk mengambil data pertanyaan
+import useFetchQuestions from "../../Hooks/useFetchQuestions"; 
 
 import { localeTime } from "../../Utils/localeTime";
 import dayjs from "dayjs";
+import { name } from "dayjs/locale/id";
 
 
 const QuestionsListCard = ({ searchQuery }) => {
@@ -63,6 +64,11 @@ const QuestionsListCard = ({ searchQuery }) => {
     );
   }
 
+  const formatUserName = (name) => {
+    if (!name) return "";
+    return name.length > 4 ? `${name.charAt(0)}${name.charAt(name.length - 1)}` : name;
+  };
+
   return (
     <div className="rounded-xl col-span-12 md:col-span-6 flex flex-col justify-center border border-secondary items-center">
       <Hero /> {/* Menampilkan Hero banner */}
@@ -84,14 +90,9 @@ const QuestionsListCard = ({ searchQuery }) => {
         filteredQuestions.slice(0, visibleCount).map((question) => (
           <div key={question.id} className="w-full flex flex-col justify-between border-b-2 min-h-[200px] gap-4 p-5">
             <div className="flex gap-1 justify-start items-center">
-              <div className="avatar">
-                <div className="w-10 rounded-full">
-                  <img
-                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                    alt="Avatar"
-                  />
-                </div>
-              </div>
+              <span className="btn btn-circle btn-neutral text-primary">
+                {formatUserName(name)}
+              </span>
               <a href="#" className="font-bold hidden xs:block text-xs hover:underline">
                 {question.topic_name}
               </a>
@@ -103,8 +104,8 @@ const QuestionsListCard = ({ searchQuery }) => {
 
             <div className="flex flex-col gap-3">
               <Link to={`/viewquestion/${question.id}`} className="flex flex-col gap-2 hover:underline">
-                  <textarea className="textarea cursor-pointer text-xs xs:text-xl font-bold p-0 border-none resize-none">{question.title}</textarea>
-                  <textarea className="textarea cursor-pointer p-0 border-none text-xs xs:text-xl  min-h-[200px]  resize-none">{question.content}</textarea>
+                  <textarea className=" bg-transparent textarea cursor-pointer text-xs xs:text-xl font-bold p-0 border-none resize-none">{question.title}</textarea>
+                  <textarea className=" bg-transparent textarea cursor-pointer p-0 border-none text-xs xs:text-xl  min-h-[200px]  resize-none">{question.content}</textarea>
               </Link>
             </div>
 
