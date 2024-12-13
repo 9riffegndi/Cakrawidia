@@ -65,8 +65,6 @@ export default function ViewQuestion() {
                 <title>{question.title} - Cakrawidia</title>
                 <meta name="description" content={question.content} />
             </Helmet>
-            
-            <Navbar />
             <GridLayout>
                 {/* Kolom utama */}
                 <div className="col-span-12 md:col-span-8 flex flex-col gap-3 p-1 min-h-screen">

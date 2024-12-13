@@ -25,7 +25,10 @@ function Leaderboard() {
 
   return (
     <div className="col-span-12 md:col-span-3 p-2 border-secondary border rounded-xl">
-      <h1 className="font-extrabold p-2 border-b-2 border-secondary/30">Cakra Tercerdas</h1>
+      <div className="flex gap-1 justify-start rounded-t  p-2 items-center border-b border-secondary">
+      <img className='w-[35px]' src="https://img.icons8.com/?size=100&id=IZE9JtMlZ5Df&format=png&color=FAB005"/>
+      <h1 className="font-bold ">Pengguna tercerdas</h1>
+      </div>
       <table className="flex flex-col mt-2">
         <tbody>
           {users.slice(0, visibleCount).map((user, index) => (
@@ -34,7 +37,7 @@ function Leaderboard() {
                 <span
                   className={`btn-md btn btn-circle hover:btn-lg transition-all ease-in duration-100 flex items-center justify-center rounded-full ${
                     index >= 0 && index <= 2
-                      ? 'bg-neutral text-primary cursor-default hover:text-2xl hover:animate-pulse hover:bg-yellow-300'
+                      ? 'bg-yellow-400 text-primary cursor-default hover:text-2xl hover:animate-pulse hover:bg-yellow-300'
                       : ''
                   }`}
                 >
