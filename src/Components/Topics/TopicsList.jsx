@@ -3,7 +3,7 @@ import React from 'react';
 import { useTopics } from '../../Hooks/useTopics';
 import PrimaryButton from '../Buttons/PrimaryButton';
 
-function TopicsList({ onTopicSelect, className = ''  }) {
+function TopicsList({onTopicSelect, className = ''  }) {
   const { topics, loading, error } = useTopics();
 
   if (loading) {

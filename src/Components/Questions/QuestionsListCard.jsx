@@ -4,18 +4,15 @@ import { Link } from "react-router-dom";
 import PrimaryButton from "../Buttons/PrimaryButton"; 
 import Hero from "../Hero/Hero"; 
 
-import useFetchQuestions from "../../Hooks/useFetchQuestions"; // 
-import useUsers from '../../Hooks/useUsers';
 
 
 import { localeTime } from "../../Utils/localeTime";
 import dayjs from "dayjs";
-import { name } from "dayjs/locale/id";
 
 
-const QuestionsListCard = ({ searchQuery, onTopicSelect  }) => {
-  const { users } = useUsers();
-  const { questions, loading } = useFetchQuestions(); // Mengambil data pertanyaan menggunakan hook
+const QuestionsListCard = ({ questions, users, searchQuery, onTopicSelect  }) => {
+  // const { users } = useUsers();
+  // const { questions, loading } = useFetchQuestions(); // Mengambil data pertanyaan menggunakan hook
   const [visibleCount, setVisibleCount] = useState(5); // Menyimpan jumlah pertanyaan yang ditampilkan
   const [sortBy, setSortBy] = useState("created_at"); // Menyimpan kriteria pengurutan (misalnya berdasarkan tanggal)
   const [sortOrder, setSortOrder] = useState("desc"); // Menyimpan urutan pengurutan (asc/desc)
@@ -55,16 +52,6 @@ const QuestionsListCard = ({ searchQuery, onTopicSelect  }) => {
     question.content.toLowerCase().includes(searchQuery.toLowerCase()) // Mencocokkan konten dengan query
   );
 
-
-
-  // Jika sedang loading, tampilkan animasi loading
-  if (loading) {
-    return (
-      <div className="flex rounded-xl col-span-12 md:col-span-6 animate-pulse bg-gray-200 items-center justify-center h-screen">
-        <span className="loading loading-infinity loading-lg"></span>
-      </div>
-    );
-  }
 
   const formatUserName = (name) => {
     if (!name) return "";
