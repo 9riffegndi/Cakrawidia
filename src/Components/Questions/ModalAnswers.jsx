@@ -7,7 +7,7 @@ import { useFormAnswers } from "../../Hooks/usepostAnswers";
 import { useNavigate, useParams } from "react-router-dom";
 
 // Fungsi untuk mengirimkan jawaban
-const postAnswers = async (questionId, content, title, setLoading) => {
+const postAnswers = async (questionId, content, setLoading) => {
   const authToken = localStorage.getItem("authToken");
 
   if (!authToken) {
@@ -19,7 +19,6 @@ const postAnswers = async (questionId, content, title, setLoading) => {
   const payload = {
     question_id: questionId,
     content: content,
-    title: title, // Mengirimkan title juga
   };
 
   setLoading(true);
@@ -49,7 +48,7 @@ export default function ModalAnswers() {
   const { id } = useParams(); // Mengambil questionId dari URL params
   const [question, setQuestion] = useState(null);
   const [loading, setLoading] = useState(false);
-  const { content, handleAnswersChange, title, handleTitleChange } = useFormAnswers();
+  const { content, handleAnswersChange} = useFormAnswers();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -89,24 +88,13 @@ export default function ModalAnswers() {
       return;
     }
 
-    // Validasi untuk memastikan title dan content tidak kosong
-    if (!title || !content) {
-      alert("Judul dan jawaban tidak boleh kosong");
-      return;
-    }
-
-    if(title.length > 20) {
-      alert("Judul tidak boleh lebih dari 20 karakter");
-      return;
-    }
-
-    // Validasi untuk memastikan questionId valid
+     // Validasi untuk memastikan questionId valid
     if (!id) {
       alert("Pertanyaan ID tidak ditemukan");
       return;
     }
 
-    const result = await postAnswers(id, content, title, setLoading);
+    const result = await postAnswers(id, content, setLoading);
 
     if (result) {
       alert("Jawaban berhasil Dikirim!");
@@ -137,15 +125,6 @@ export default function ModalAnswers() {
               className="btn btn-sm btn-circle"
             />
           </div>
-
-          {/* Menampilkan judul pertanyaan */}
-
-          <input 
-          className=" border-none  outline-none w-full"
-            placeholder="Tuliskan judul jawabanmu disini..."
-            value={title}
-            onChange={handleTitleChange}
-          />
 
           <Textarea
             placeholder="Tuliskan jawabanmu disini..."
