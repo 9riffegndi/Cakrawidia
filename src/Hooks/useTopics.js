@@ -6,12 +6,12 @@ import { fetchTopics } from '../Services/topicService';
 export const useTopics = () => {
   const [topics, setTopics] = useState([]);  // Default state sebagai array kosong
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true); // Pastikan status loading benar-benar di-reset
-      setError(null);  // Reset error sebelum fetching data
+      setError("");  // Reset error sebelum fetching data
       try {
         const data = await fetchTopics();
         if (data && Array.isArray(data)) {

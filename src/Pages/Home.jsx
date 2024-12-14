@@ -22,7 +22,9 @@ import { fetchQuestions } from "../Services/questionService";
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
+
   const [loading, setLoading] = useState(true);
+  
   const [error, setError] = useState(null);
 
   const [users, setUsers] = useState([]);

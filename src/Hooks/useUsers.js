@@ -5,7 +5,7 @@ import { fetchUsers } from '../Services/leaderboardService';
 const useUsers = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const loadData = async () => {

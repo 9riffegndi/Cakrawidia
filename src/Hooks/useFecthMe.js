@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 
 export const useFetchMe = (authToken) => {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState("");
 
     useEffect(() => {
         if (!authToken) return;

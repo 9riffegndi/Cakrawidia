@@ -81,8 +81,9 @@ export default function ModalQuestions() {
     const result = await postQuestion(selectedTopic, title, question, setLoading);
 
     if (result) {
-      alert("Pertanyaan berhasil diajukan!");
+      alert("Pertanyaan berhasil diajukan!")
       document.getElementById("my_modal_6").checked = false;
+      window.location.reload();
     } else {
       alert("Gagal mengajukan pertanyaan. Coba lagi nanti.");
     }
