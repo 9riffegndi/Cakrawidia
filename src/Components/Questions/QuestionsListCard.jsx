@@ -13,7 +13,7 @@ import dayjs from "dayjs";
 import { name } from "dayjs/locale/id";
 
 
-const QuestionsListCard = ({ searchQuery }) => {
+const QuestionsListCard = ({ searchQuery, onTopicSelect  }) => {
   const { users } = useUsers();
   const { questions, loading } = useFetchQuestions(); // Mengambil data pertanyaan menggunakan hook
   const [visibleCount, setVisibleCount] = useState(5); // Menyimpan jumlah pertanyaan yang ditampilkan
@@ -95,9 +95,11 @@ const QuestionsListCard = ({ searchQuery }) => {
               <span className="btn btn-circle btn-neutral text-primary">
                 {formatUserName(users.find((user) => user.id === question.user_id).username)}
               </span>
-              <a href="#" className="font-bold hidden xs:block text-xs hover:underline">
+              <button 
+                onClick={() => onTopicSelect(question.topic_name)} 
+                className="font-bold hidden xs:block text-xs hover:underline">
                 {question.topic_name}
-              </a>
+              </button>
               <span>|</span>
               <p className="font-bold hidden xs:block text-xs">
                 {localeTime(question.created_at)} {/* Menampilkan waktu relatif */}
