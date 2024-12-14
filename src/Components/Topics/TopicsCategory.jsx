@@ -2,10 +2,10 @@
 import React from 'react';
 import TopicsList from './TopicsList';
 
-function TopicsCategory() {
+function TopicsCategory({onTopicSelect}) {
   return (
     <div className="min-h-screen  col-span-12 hidden md:flex md:col-span-3 flex-col gap-2">
-      <TopicsList />
+      <TopicsList onTopicSelect={onTopicSelect} />
     </div>
   );
 }
