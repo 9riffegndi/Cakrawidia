@@ -75,14 +75,14 @@ export default function ViewQuestion() {
                 {/* Kolom utama */}
                 <div className=" col-span-12 md:col-span-8 flex flex-col gap-3  min-h-screen">
                     <div className="border rounded-xl border-secondary flex flex-col gap-4 p-4">
-                        <div className="flex gap-1 items-center text-sm">
+                        <div className="flex gap-1 font-bold items-center ">
                             
                             <p className="btn btn-neutral text-primary btn-circle">{formatUserName(question.user?.username)}</p>
-                            <p className="font-semibold">{question.user?.username || "Anonim"}</p>
-                            <span>|</span>
-                            <p className="font-semibold">{question.topic?.name || "Tidak diketahui"}</p>
-                            <span>|</span>
-                            <p className="font-semibold">{localeTime(question.created_at)}</p>
+                            <p className="">{question.user?.username || "Anonim"}</p>
+                            <span className="hidden md:block">|</span>
+                            <p className="hidden md:block">{question.topic?.name || "Tidak diketahui"}</p>
+                            <span className="hidden md:block">|</span>
+                            <p className="hidden md:block">{localeTime(question.created_at)}</p>
                         </div>
                         <h1 className="font-bold text-2xl">{question.title}</h1>
                         <p className="text-lg">{question.content}</p>
@@ -98,7 +98,7 @@ export default function ViewQuestion() {
                             question.answers.map((answer) => (
                                 <div
                                     key={answer.id}
-                                    className="gap-2 flex flex-col p-4 border-t   border-secondary"
+                                    className="gap-2 flex flex-col p-4 border-t border-secondary"
                                 >
                                     <div className="flex gap-1 font-semibold items-center">
                                     <p className="btn btn-neutral text-primary btn-circle">{formatUserName(answer.user?.username)}</p>

@@ -95,6 +95,11 @@ export default function ModalAnswers() {
       return;
     }
 
+    if(title.length > 20) {
+      alert("Judul tidak boleh lebih dari 20 karakter");
+      return;
+    }
+
     // Validasi untuk memastikan questionId valid
     if (!id) {
       alert("Pertanyaan ID tidak ditemukan");
@@ -135,7 +140,8 @@ export default function ModalAnswers() {
 
           {/* Menampilkan judul pertanyaan */}
 
-          <Textarea
+          <input 
+          className=" border-none  outline-none w-full"
             placeholder="Tuliskan judul jawabanmu disini..."
             value={title}
             onChange={handleTitleChange}

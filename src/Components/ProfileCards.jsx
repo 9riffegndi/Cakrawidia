@@ -18,7 +18,7 @@ const ProfileCards = () => {
 
     if (error) {
         return (
-            <div className="p-4 colspan-4 rounded-lg shadow-md bg-red-100">
+            <div className="p-4 colspan-4 rounded-lg  hidden shadow-md bg-red-100">
                 <p>Error: {error}</p>
             </div>
         );
