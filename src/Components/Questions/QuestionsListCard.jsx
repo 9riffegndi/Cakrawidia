@@ -104,6 +104,7 @@ const QuestionsListCard = ({ searchQuery }) => {
               </p>
             </div>
 
+
             <div className="flex flex-col gap-3">
               <Link to={`/viewquestion/${question.id}`} className="flex flex-col gap-2 hover:underline">
                   <textarea className=" bg-transparent textarea cursor-pointer text-xs xs:text-xl font-bold p-0 border-none resize-none">{question.title}</textarea>
@@ -111,9 +112,10 @@ const QuestionsListCard = ({ searchQuery }) => {
               </Link>
             </div>
 
+
             <div className="flex w-full justify-end">
               <Link to={`/viewquestion/${question.id}`} >
-                <PrimaryButton label="Jawab" className="btn btn-xs bg-transparent text-secondary" /> {/* Tombol jawab */}
+                <PrimaryButton label="Jawab" className="btn btn-xs bg-transparent text-secondary hover:text-primary" /> {/* Tombol jawab */}
               </Link>
             </div>
 
