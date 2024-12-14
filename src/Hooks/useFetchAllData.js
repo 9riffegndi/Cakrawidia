@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
-import { fetchQuestions, fetchUsers, fetchTopics } from "../../api"; // Asumsikan ada fungsi API fetch
+import {  fetchTopics } from "../Services/topicService"; // Asumsikan ada fungsi API fetch
+import { fetchQuestions } from "../Services/questionService"; // Asumsikan ada fungsi API fetch
+import { fetchUsers } from "../Services/leaderboardService"; // Asumsikan ada fungsi API fetch
 
 export const useFetchAllData = () => {
     const [data, setData] = useState({ questions: [], users: [], topics: [] });

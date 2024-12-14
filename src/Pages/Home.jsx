@@ -19,6 +19,7 @@ import ToolipBtn from "../Components/Buttons/ToolipBtn";
 // Custom Hook
 import { useFetchAllData } from "../Hooks/useFetchAllData";
 
+
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
   const { data, loading, error } = useFetchAllData(); // Mengambil semua data
@@ -39,7 +40,7 @@ export default function Home() {
     <MainLayout>
       <Navbar onSearch={setSearchQuery} />
       <GridLayout>
-        <TopicsCategory topics={data.topics} onTopicSelect={handleTopicSelect} /> {/* Kirim data topik */}
+        <TopicsCategory onTopicSelect={handleTopicSelect} /> {/* Kirim data topik */}
         <QuestionsListCard
           questions={data.questions}
           searchQuery={searchQuery}
@@ -52,3 +53,6 @@ export default function Home() {
     </MainLayout>
   );
 }
+
+
+
