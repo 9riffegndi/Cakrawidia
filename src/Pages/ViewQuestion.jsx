@@ -19,7 +19,7 @@ import Footer from "../Partials/Footer";
 import LabelButton from "../Components/Buttons/LabelButton";
 import ProfileCards from "../Components/ProfileCards";
 import Leaderboard from "../Components/Leaderboard/Leaderboard";
-
+import ModalAnswers from "../Components/Questions/ModalAnswers";
 
 export default function ViewQuestion() {
     const { id } = useParams(); // Ambil ID dari URL menggunakan React Router DOM
@@ -86,7 +86,9 @@ export default function ViewQuestion() {
                         </div>
                         <h1 className="font-bold text-2xl">{question.title}</h1>
                         <p className="text-lg">{question.content}</p>
-                        <LabelButton label="Tambahkan jawaban" className="btn" />
+
+                        
+                        <ModalAnswers />
                     </div>
 
                     {/* Jawaban */}
@@ -96,19 +98,18 @@ export default function ViewQuestion() {
                             question.answers.map((answer) => (
                                 <div
                                     key={answer.id}
-                                    className="gap-2 flex flex-col p-4 border-t border-secondary"
+                                    className="gap-2 flex flex-col p-4 border-t   border-secondary"
                                 >
                                     <div className="flex gap-1 font-semibold items-center">
-                                        <div className="avatar">
-                                            <div className="w-10 rounded-full">
-                                                <img
-                                                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                                                    alt="Avatar"
-                                                />
-                                            </div>
-                                        </div>
-                                        <p>{answer.user?.username || "Anonim"}</p>
+                                    <p className="btn btn-neutral text-primary btn-circle">{formatUserName(answer.user?.username)}</p>
+                                    
+
+                                    <p>{answer.user?.username || "Anonim"}</p>
+                                    <span>|</span>
+                                    <p>{localeTime(answer.created_at)}</p>
                                     </div>
+                                    
+                                    <p>{answer.title}</p>
                                     <p>{answer.content}</p>
                                 </div>
                             ))

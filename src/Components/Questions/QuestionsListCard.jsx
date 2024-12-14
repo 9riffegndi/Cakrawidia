@@ -96,6 +96,7 @@ const QuestionsListCard = ({ questions, users, searchQuery, onTopicSelect  }) =>
 
             <div className="flex flex-col gap-3">
               <Link to={`/viewquestion/${question.id}`} className="flex flex-col gap-2 hover:underline">
+                  <p>{question.id}</p>
                   <p className=" whitespace-pre-wrap break-words text-xs xs:text-xl font-bold ">{question.title}</p>
                   <p className=" whitespace-pre-wrap break-words text-xs xs:text-xl  min-h-[100px]">{question.content}</p>
               </Link>

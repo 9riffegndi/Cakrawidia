@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 // Custom hook untuk menangani form pengajuan pertanyaan
-export const useForm = () => {
+export const useFormQuestions = () => {
   // State untuk menyimpan nilai input pertanyaan dan topik yang dipilih
   const [question, setQuestion] = useState(""); // Menyimpan pertanyaan yang dimasukkan oleh pengguna
   const [title, setTitle] = useState("");

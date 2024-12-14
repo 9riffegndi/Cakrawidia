@@ -4,7 +4,7 @@ import LabelButton from "../Buttons/LabelButton";
 import PrimaryButton from "../Buttons/PrimaryButton";
 import TopicsDropdown from "../Topics/TopicsDropdown";
 import Textarea from "../TextArea";
-import { useForm } from "../../Hooks/usepostQuestions";
+import { useFormQuestions } from "../../Hooks/usepostQuestions";
 import { useNavigate } from "react-router-dom";
 
 
@@ -58,7 +58,7 @@ export default function ModalQuestions() {
     handleTitleChange,
     handleQuestionChange,
     handleTopicChange,
-  } = useForm();
+  } = useFormQuestions();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
