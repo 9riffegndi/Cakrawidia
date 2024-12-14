@@ -1,33 +1,32 @@
 // src/components/leaderboard/Leaderboard.jsx
 import React, { useState } from 'react';
 import PrimaryButton from '../Buttons/PrimaryButton';
-import useUsers from '../../Hooks/useUsers';
+// import useUsers from '../../Hooks/useUsers';
 
-function Leaderboard({ className='' }) {
-  const { users, loading, error } = useUsers();
+function Leaderboard({users}) {
+  // const { users, loading, error } = useUsers();
   const [visibleCount, setVisibleCount] = useState(15);
 
   const loadMore = () => {
     setVisibleCount((prevCount) => prevCount + 5);
   };
 
-  if (loading) {
-    return (
-      <div className="flex animate-pulse bg-gray-200 rounded-xl items-center justify-center col-span-12 md:col-span-3 min-h-screen">
-        <span className="loading loading-infinity loading-lg"></span>
-      </div>
-    );
-  }
+  // if (loading) {
+  //   return (
+  //     <div className="flex animate-pulse bg-gray-200 rounded-xl items-center justify-center col-span-12 md:col-span-3 min-h-screen">
+  //       <span className="loading loading-infinity loading-lg"></span>
+  //     </div>
+  //   );
+  // }
 
-  if (error) {
-    return <p className="flex justify-center items-center  col-span-12 md:col-span-3   font-bold min-h-screen text-red-500">Error: {error}</p>;
-  }
+  // if (error) {
+  //   return <p className="flex justify-center items-center  col-span-12 md:col-span-3   font-bold min-h-screen text-red-500">Error: {error}</p>;
+  // }
 
   const formatUserName = (name) => {
     if (!name) return "";
     return name.length > 4 ? `${name.charAt(0)}${name.charAt(name.length - 1)}` : name;
   };
-
 
   return (
     <div className={`col-span-12 md:col-span-3 p-2 border-secondary border rounded-xl ${className} `}>
