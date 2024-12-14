@@ -77,7 +77,7 @@ export default function ViewQuestion() {
                     <div className="border rounded-xl border-secondary flex flex-col gap-4 p-4">
                         <div className="flex gap-1 items-center text-sm">
                             
-                            <p className="btn btn-neutral text-primary btn-circle">{formatUserName(question.user?.username || "Anonim")}</p>
+                            <p className="btn btn-neutral text-primary btn-circle">{formatUserName(question.user?.username)}</p>
                             <p className="font-semibold">{question.user?.username || "Anonim"}</p>
                             <span>|</span>
                             <p className="font-semibold">{question.topic?.name || "Tidak diketahui"}</p>
