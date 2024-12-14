@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-
+import { useState } from "react";
 // Layouts
 import MainLayout from "../Layouts/MainLayout";
 import GridLayout from "../Layouts/GridLayout";
@@ -17,41 +16,27 @@ import Leaderboard from "../Components/Leaderboard/Leaderboard";
 import ToolipBtn from "../Components/Buttons/ToolipBtn";
 
 // Custom Hook
-import { useFetchAllData } from "../Hooks/useFetchAllData";
 
 
 export default function Home() {
-  const [searchQuery, setSearchQuery] = useState("");
-  const { data, loading, error } = useFetchAllData(); // Mengambil semua data
+    const [searchQuery, setSearchQuery] = useState("");
 
-  const handleTopicSelect = (topicName) => {
-    setSearchQuery(topicName); // Perbarui query pencarian berdasarkan topik
-  };
+    const handleTopicSelect = (topicName) => {
+        setSearchQuery(topicName); // Perbarui query pencarian berdasarkan topik
+    };
 
-  if (loading) {
-    return <div className="loading">Loading...</div>; // Tampilkan loading state
-  }
-
-  if (error) {
-    return <div className="error">Error: {error.message}</div>; // Tampilkan error
-  }
-
-  return (
-    <MainLayout>
-      <Navbar onSearch={setSearchQuery} />
-      <GridLayout>
-        <TopicsCategory onTopicSelect={handleTopicSelect} /> {/* Kirim data topik */}
-        <QuestionsListCard
-          questions={data.questions}
-          searchQuery={searchQuery}
-          onTopicSelect={handleTopicSelect}
-        /> {/* Kirim data pertanyaan dan query pencarian */}
-        <Leaderboard users={data.users} /> {/* Kirim data pengguna */}
-      </GridLayout>
-      <ToolipBtn />
-      <Footer />
-    </MainLayout>
-  );
+    return (
+        <MainLayout>
+            <Navbar onSearch={setSearchQuery} />
+            <GridLayout>
+                <TopicsCategory  onTopicSelect={handleTopicSelect} /> {/* Kirim fungsi handler */}
+                <QuestionsListCard onTopicSelect={handleTopicSelect} searchQuery={searchQuery} /> {/* Kirim state pencarian */}
+                <Leaderboard />
+            </GridLayout>
+            <ToolipBtn />
+            <Footer />
+        </MainLayout>
+    );
 }
 
 

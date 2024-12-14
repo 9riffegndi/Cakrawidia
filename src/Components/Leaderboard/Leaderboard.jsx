@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import PrimaryButton from '../Buttons/PrimaryButton';
 import useUsers from '../../Hooks/useUsers';
 
-function Leaderboard() {
+function Leaderboard({ className='' }) {
   const { users, loading, error } = useUsers();
   const [visibleCount, setVisibleCount] = useState(15);
 
@@ -30,7 +30,7 @@ function Leaderboard() {
 
 
   return (
-    <div className="col-span-12 md:col-span-3 p-2 border-secondary border rounded-xl">
+    <div className={`col-span-12 md:col-span-3 p-2 border-secondary border rounded-xl ${className} `}>
       <div className="flex gap-1 justify-start rounded-t  p-2 items-center border-b border-secondary">
       <img className='w-[35px]' src="https://img.icons8.com/?size=100&id=IZE9JtMlZ5Df&format=png&color=FAB005"/>
       <h1 className="font-bold ">Pengguna tercerdas</h1>

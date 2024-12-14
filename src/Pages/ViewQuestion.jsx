@@ -1,7 +1,7 @@
 
 
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { Helmet } from "react-helmet";
 
@@ -17,6 +17,8 @@ import Footer from "../Partials/Footer";
 
 // Components
 import LabelButton from "../Components/Buttons/LabelButton";
+import ProfileCards from "../Components/ProfileCards";
+import Leaderboard from "../Components/Leaderboard/Leaderboard";
 
 
 export default function ViewQuestion() {
@@ -54,7 +56,12 @@ export default function ViewQuestion() {
         );
     }
 
-    
+    const formatUserName = (name) => {
+        if (!name) return "";
+        return name.length > 4 ? `${name.charAt(0)}${name.charAt(name.length - 1)}` : name;
+    };
+
+
 
     return (
         
@@ -66,17 +73,11 @@ export default function ViewQuestion() {
             </Helmet>
             <GridLayout>
                 {/* Kolom utama */}
-                <div className="col-span-12 md:col-span-8 flex flex-col gap-3 p-1 min-h-screen">
-                    <div className="border rounded-md border-secondary flex flex-col gap-4 p-4">
+                <div className=" col-span-12 md:col-span-8 flex flex-col gap-3  min-h-screen">
+                    <div className="border rounded-xl border-secondary flex flex-col gap-4 p-4">
                         <div className="flex gap-1 items-center text-sm">
-                            <div className="avatar">
-                                <div className="w-10 rounded-full">
-                                    <img
-                                        src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                                        alt="Avatar"
-                                    />
-                                </div>
-                            </div>
+                            
+                            <p className="btn btn-neutral text-primary btn-circle">{formatUserName(question.user?.username || "Anonim")}</p>
                             <p className="font-semibold">{question.user?.username || "Anonim"}</p>
                             <span>|</span>
                             <p className="font-semibold">{question.topic?.name || "Tidak diketahui"}</p>
@@ -89,7 +90,7 @@ export default function ViewQuestion() {
                     </div>
 
                     {/* Jawaban */}
-                    <div className="flex flex-col border border-secondary rounded-md">
+                    <div className="flex flex-col border grow  border-secondary rounded-xl">
                         <h2 className="text-3xl p-4 font-bold">Jawaban</h2>
                         {question.answers.length > 0 ? (
                             question.answers.map((answer) => (
@@ -112,31 +113,20 @@ export default function ViewQuestion() {
                                 </div>
                             ))
                         ) : (
-                            <p className="p-4 text-center">Belum ada jawaban.</p>
+                            <div className="w-full flex items-center  grow justify-center">
+                                <p className="p-4 text-center font-bold">Belum ada jawaban.</p>
+                            </div>
                         )}
                     </div>
                 </div>
 
                 {/* Kolom samping */}
-                <div className="hidden md:flex col-span-4 border border-secondary rounded-md flex-col">
-                    <div className="flex gap-2 p-4">
-                        <div className="avatar">
-                            <div className="w-28 rounded-full">
-                                <img
-                                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                                    alt="Avatar"
-                                />
-                            </div>
-                        </div>
-                        <div className="flex flex-col">
-                            <p className="font-semibold text-sm">Nama pengguna</p>
-                            <p className="badge badge-warning">2222 poin</p>
-                        </div>
-                    </div>
-                    <div className="flex justify-center items-center btn btn-outline cursor-pointer p-4 border-t border-secondary">
-                        Lihat pencapaian saya
-                    </div>
+                <div className="flex min-h-screen flex-col gap-3 col-span-12 md:col-span-4">
+                    <ProfileCards />
+                    <Leaderboard className="grow" />
                 </div>
+
+
             </GridLayout>
             
             <Footer />

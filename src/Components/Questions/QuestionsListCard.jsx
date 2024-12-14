@@ -22,7 +22,7 @@ const QuestionsListCard = ({ searchQuery, onTopicSelect  }) => {
 
   // Fungsi untuk menambah jumlah pertanyaan yang ditampilkan
   const loadMore = () => {
-    setVisibleCount((prevCount) => prevCount + 5);
+    setVisibleCount((prevCount) => prevCount + 10);
   };
 
   // Fungsi untuk mengubah kriteria dan urutan pengurutan
