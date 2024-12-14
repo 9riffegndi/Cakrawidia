@@ -123,7 +123,7 @@ export default function ViewQuestion() {
                 {/* Kolom samping */}
                 <div className="flex min-h-screen flex-col gap-3 col-span-12 md:col-span-4">
                     <ProfileCards />
-                    <Leaderboard className="grow" />
+                    {/* <Leaderboard  className="grow" /> */}
                 </div>
 
 

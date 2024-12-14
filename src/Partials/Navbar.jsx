@@ -42,7 +42,7 @@ export default function Navbar({ onSearch }) {
         if (isAuthenticated) {
             fetchProfile();
         }
-    }, [isAuthenticated]);
+    }, [isAuthenticated]);  
 
 
     const formatUserName = (name) => {
