@@ -8,7 +8,7 @@ function TopicsList({onTopicSelect, className = ''  }) {
 
   if (loading) {
     return (
-      <div className={`animate-pulse col-span-12 hidden md:flex  md:col-span-3 rounded-xl justify-center items-center bg-gray-200 min-h-screen ${className}`}>
+        <div className={`animate-pulse col-span-12 hidden md:flex  md:col-span-3 rounded-xl justify-center items-center bg-gray-200 min-h-screen ${className}`}>
         <span className="loading loading-infinity loading-lg"></span>
       </div>
     );
@@ -19,12 +19,12 @@ function TopicsList({onTopicSelect, className = ''  }) {
   }
   
   return (
-    <ul className={`flex flex-col gap-2 ${className}`}>
+    <ul className={`flex  flex-col gap-2 ${className}`}>
       
       <h1 onClick={() => onTopicSelect("")} className="cursor-pointer font-bold p-2 border-b border-secondary bg-neutral text-primary rounded-t">Semua Topik</h1>
 
       {topics.map((topic) => (
-        <li className="p-2 rounded-md hover:bg-secondary/10" key={topic.id}>
+        <li className="p-2 rounded-md hover:bg-secondary" key={topic.id}>
           <PrimaryButton
             onClick={() => onTopicSelect(topic.name)}
             className="bg-transparent hover:bg-transparent text-secondary hover:text-secondary"

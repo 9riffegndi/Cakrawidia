@@ -118,7 +118,7 @@ export default function Navbar({ onSearch }) {
                                 tabIndex="0"
                                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                                 <li>
-                                    <Link to="/profile">Profile</Link>
+                                    <Link to="/profileMe">Profile</Link>
                                 </li>
                                 <li>
                                     <button onClick={handleLogout}>Logout</button>

@@ -6,6 +6,7 @@ import Home from "./Pages/Home";
 import ViewQuestion from "./Pages/ViewQuestion";
 import Login from "./Pages/Auth/Login";
 import Register from "./Pages/Auth/Register";
+import ProfileMe from "./Pages/ProfileMe";
 
 const App = () => {
     return (
@@ -55,6 +56,20 @@ const App = () => {
                             <Register />
                         </>
                     }
+                />
+
+                <Route
+                path="/profileMe"
+                element={
+                    <>
+                    <Helmet>
+                        <title>Profile - Cakrawidia</title>
+                    </Helmet>
+                    <ProfileMe />
+                    
+                    </>
+                    
+                }
                 />
             </Routes>
         </Router>

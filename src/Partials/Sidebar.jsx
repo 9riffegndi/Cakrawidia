@@ -1,6 +1,6 @@
 import React from 'react';
 import LabelButton from '../Components/Buttons/LabelButton';
-import TopicList from '../Components/Topics/TopicsList';
+import TopicList from '../Components/Topics/TopicsListSidebar';
 
 
 export default function Sidebar() {

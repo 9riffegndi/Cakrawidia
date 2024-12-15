@@ -14,7 +14,7 @@ async function postQuestion(topicId, title, content, setLoading) {
   
 
   if (!authToken) {    
-    alert("Token autentikasi tidak ditemukan. Silakan login terlebih dahulu.");
+    alert("Silakan login terlebih dahulu.");
     return null;
   }
 
@@ -67,7 +67,7 @@ export default function ModalQuestions() {
 
     // Cek jika token tidak ada, arahkan ke login
     if (!authToken) {
-      alert("Token autentikasi tidak ditemukan. Silakan login terlebih dahulu.");
+      alert("Silakan login terlebih dahulu.");
       navigate("/login");
       return;
     }
