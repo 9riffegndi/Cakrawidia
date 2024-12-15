@@ -15,7 +15,7 @@ const TopicsDropdown = ({ onSelect }) => {
         onChange={handleChange}
         defaultValue="" // Default to the placeholder option
       >
-        <option selected disabled>
+        <option selected >
           Pilih kategori topik
         </option>
         {loading ? (
