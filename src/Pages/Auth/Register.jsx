@@ -70,7 +70,7 @@ const Register = () => {
         
             <Form
                 onSubmit={handleRegister}
-                className="flex flex-col gap-2 rounded  w-[400px] ">
+                className="flex flex-col gap-2 rounded  w-[90%]  md:w-[24%] ">
 
                 {error && (
                     <div role="alert" className="alert alert-error">

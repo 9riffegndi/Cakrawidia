@@ -93,7 +93,7 @@ const Login = () => {
             title={"Selamat datang Kembali :)"}
             description={"Masukan email dan password untuk Login"}
         >
-            <Form onSubmit={handleLogin} className="flex flex-col gap-2 rounded w-[400px]">
+            <Form onSubmit={handleLogin} className=" flex flex-col gap-2 rounded w-[50%]  md:w-[24%]">
                 {error && (
                     <div role="alert" className="alert alert-error">
                         <span className="text-xs">{error}</span>

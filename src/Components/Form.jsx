@@ -1,9 +1,9 @@
 import { Children } from "react"
 
-export default function Form({children ,onSubmit ='', classname=''}) {
+export default function Form({children ,onSubmit ='', className=''}) {
     return(
         <form
-            className={`flex flex-col gap-2 rounded-md  w-[50%]  md:w-[24%] ${classname}`}
+            className={`flex flex-col gap-2 w-full ${className}`}
             onSubmit={onSubmit}
         >
             {children}

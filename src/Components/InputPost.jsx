@@ -3,7 +3,7 @@ import React from 'react';
 export default function InputPost({label='',placeholder= '', classname = '', type = 'text', value, onChange }) {
   return (
     <div className='flex justify-center items-start flex-col gap-1'>
-        <h1 className='ml-3 font-bold text-xs'>{label} <span className='text-red-500'>*</span></h1>
+        <h1 className={`ml-3 text-sm ${classname}`} font-bold text-xs>{label} <span className='text-red-500'>*</span></h1>
         <input
             placeholder={placeholder}
             type={type}
