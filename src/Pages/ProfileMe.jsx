@@ -1,7 +1,10 @@
 import React from 'react';
-import { useFetchMe } from "../Hooks/useFecthMe";
-import { useNavigate } from "react-router-dom";
 import { Helmet } from 'react-helmet';
+import { useNavigate } from "react-router-dom";
+
+
+import { useFetchMe } from "../Hooks/useFecthMe";
+import { useDeleteAcc } from "../Hooks/useDeleteAcc";
 
 
 import Form from '../Components/Form';
@@ -18,11 +21,18 @@ import relativeTime from "dayjs/plugin/relativeTime";
 dayjs.extend(relativeTime);
 
 
+
+
+
+
 export default function ProfileMe() {
     const authToken = localStorage.getItem("authToken"); // Ambil token dari localStorage
-    const { user } = useFetchMe(authToken); // Mengambil data pengguna dari hook
+    const { deleteAcc, handleDeleteAccChange } = useDeleteAcc(authToken);
+    const { user, error } = useFetchMe(authToken); // Mengambil data pengguna dari hook
+    const { isLoading } = useFetchMe(authToken);
     const navigate = useNavigate(); // Initialize useNavigate outside of the handler
-
+    
+    
     // Format username menjadi singkatan
     const formatUsername = (username) => {
         if (!username) return ""; // Jika username undefined, kembalikan string kosong
@@ -32,20 +42,39 @@ export default function ProfileMe() {
             .join('.'); // Gabungkan dengan tanda titik
     };
 
+
+    const handleDeleteAcc = async () => {
+        await deleteAcc();
+        navigate("/");
+    };
+
     // Logout handler
     const handleLogout = () => {
         localStorage.removeItem("authToken");
         navigate("/"); // Redirect ke halaman Home setelah logout
     };
 
-    // Tampilkan loading state jika data user belum tersedia
+
+    if (error) {
+        return (
+            navigate("/")
+        );
+    }
+
+    if(isLoading) {
+        return (
+                <MainLayout>
+                    <div className="min-h-screen flex w-full items-center justify-center">
+                        <span className="bg-gray-300 loading loading-infinity loading-lg"></span>
+                    </div>
+                </MainLayout>
+            
+        );
+    }
+
     if (!user) {
         return (
-            <MainLayout>
-                <div className="min-h-screen flex w-full items-center justify-center">
-                    <span className="bg-gray-300 loading loading-infinity loading-lg"></span>
-                </div>
-            </MainLayout>
+            navigate("/")
         );
     }
 
@@ -116,25 +145,30 @@ export default function ProfileMe() {
                                 // onSubmit={}
                             >
                                 <InputPost
-                                    label='Masukkan Username baru'
-                                    placeholder='Username'
+                                    label={'Masukkan Username baru'}
+                                    placeholder={'Username'}
+                                    type={'text'}
                                     classname='w-full text-secondary'
                                 />
 
                                 <InputPost
-                                    label='Masukkan Email baru'
-                                    placeholder='Email'
+                                    label={'Masukkan Email baru'}
+                                    type={'email'}
+                                    placeholder={'Email'}
                                     classname='w-full text-secondary'
                                 />
 
                                 <InputPost
-                                    label='Verifikasi Password'
+                                    label={'Verifikasi Password'}
+                                    type={'password'}
+
                                     placeholder='Password'
                                     classname='w-full text-secondary'
                                 />
 
                                 <PrimaryButton
                                     label={'Update Profile'}
+                                    type={'submit'}
                                     className='w-full btn btn-neutral text-primary'
                                 />
                             </Form>
@@ -165,15 +199,19 @@ export default function ProfileMe() {
                                 // onSubmit={}
                             >
                                 <InputPost
-                                    label='Verifikasi Password'
-                                    placeholder='Password'
+                                    label={'Verifikasi Password'}
+                                    type={'password'}
+                                    placeholder={'Password'}
                                     classname='w-full text-secondary'
                                 />
 
                                 <PrimaryButton
                                     label={'Hapus Akun'}
+                                    type={'submit'}
+                                    // value={}
                                     className='w-full btn btn-error text-primary'
                                 />
+
                             </Form>
                         </div>
                     </div>

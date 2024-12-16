@@ -7,7 +7,7 @@ export const useFormAnswers = () => {
   // Fungsi untuk menangani perubahan pada input jawaban
   
 
-   const handleAnswersChange = (e) => setContent(e.target.value);
+  const handleAnswersChange = (e) => setContent(e.target.value);
   const handleTitleChange = (e) => setTitle(e.target.value);
 
   const handleSubmit = () => {
