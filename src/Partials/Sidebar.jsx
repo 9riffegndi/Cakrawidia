@@ -5,7 +5,7 @@ import TopicList from '../Components/Topics/TopicsListSidebar';
 
 export default function Sidebar() {
   return (
-    <div className='flex z-50 min-h-screen flex-col gap-2 bg-primary rounded-lg p-2 '>
+    <div className='flex relative min-h-screen flex-col gap-2 bg-primary rounded-lg p-2 '>
       <div className="flex justify-end p-2 w-full items-center font-bold">
         <LabelButton
           htmlFor="my-drawer-4"
