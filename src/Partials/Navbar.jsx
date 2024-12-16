@@ -15,16 +15,58 @@ export default function Navbar({ onSearch }) {
 
     const isAuthenticated = localStorage.getItem("authToken");
 
+    // Fungsi untuk refresh token jika diperlukan
+    const refreshToken = async () => {
+        try {
+            const response = await fetch("https://cakrawidia-4ae06d46343e.herokuapp.com/api/refresh-token", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    token: localStorage.getItem("refreshToken"), // Pastikan refresh token tersimpan di localStorage
+                }),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                localStorage.setItem("authToken", data.newAuthToken);
+                return data.newAuthToken;
+            } else {
+                handleLogout(); // Jika gagal refresh token, logout otomatis
+            }
+        } catch (error) {
+            console.error("Error refreshing token:", error);
+            handleLogout();
+        }
+    };
+
     const fetchProfile = async () => {
         setIsLoading(true); // Mulai loading
+        let token = isAuthenticated; // Ambil token awal
         try {
-            const response = await fetch("https://cakrawidia-4ae06d46343e.herokuapp.com/api/me", {
+            let response = await fetch("https://cakrawidia-4ae06d46343e.herokuapp.com/api/me", {
                 method: "GET",
                 headers: {
-                    "Authorization": `Bearer ${isAuthenticated}`,
+                    "Authorization": `Bearer ${token}`,
                     "Content-Type": "application/json",
                 },
             });
+
+            if (response.status === 401) {
+                // Jika token kadaluarsa, coba refresh token
+                token = await refreshToken();
+                if (token) {
+                    // Coba fetch ulang dengan token baru
+                    response = await fetch("https://cakrawidia-4ae06d46343e.herokuapp.com/api/me", {
+                        method: "GET",
+                        headers: {
+                            "Authorization": `Bearer ${token}`,
+                            "Content-Type": "application/json",
+                        },
+                    });
+                }
+            }
 
             const data = await response.json();
             if (data.user) {
@@ -41,9 +83,10 @@ export default function Navbar({ onSearch }) {
     useEffect(() => {
         if (isAuthenticated) {
             fetchProfile();
+        } else {
+            handleLogout(); // Jika token tidak ada, logout otomatis
         }
     }, [isAuthenticated]);  
-
 
     const formatUserName = (name) => {
         if (!name) return "";
@@ -52,7 +95,8 @@ export default function Navbar({ onSearch }) {
 
     const handleLogout = () => {
         localStorage.removeItem("authToken");
-        navigate("/"); // Redirect ke halaman Home setelah logout
+        localStorage.removeItem("refreshToken"); // Hapus refresh token jika ada
+        navigate("/"); // Redirect ke halaman login
     };
 
     const handleSearchChange = (e) => {
@@ -61,10 +105,9 @@ export default function Navbar({ onSearch }) {
         onSearch(query); // Update query ke parent component jika diperlukan
     };
 
-
     return (
         <div className="flex flex-col  gap-1 z-10 p-2 rounded-b-lg shadow  sticky top-0  bg-white w-full">
-        <div className="flex justify-between md:grid xs:grid-cols-12  w-full p-2">
+            <div className="flex justify-between md:grid xs:grid-cols-12  w-full p-2">
                 <ApplicationLogo className="col-span-3" />
                 <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
                 <LabelButton
@@ -81,7 +124,6 @@ export default function Navbar({ onSearch }) {
                     <Sidebar />
                 </div>
 
-
                 <SearchInput
                     type="text"
                     placeholder="Search"
@@ -90,8 +132,7 @@ export default function Navbar({ onSearch }) {
                     onChange={handleSearchChange}
                 />
 
-
-                <div className="dropdown  col-span-3  flex items-center justify-end dropdown-end">
+                <div className="dropdown col-span-3 flex items-center justify-end dropdown-end">
                     {isAuthenticated ? (
                         <div>
                             <div 
@@ -105,7 +146,7 @@ export default function Navbar({ onSearch }) {
                                         <span className="btn btn-circle animate-pulse bg-gray-200" />
                                     </div>
                                 ) : (
-                                    <div className="justify-center  gap-1 flex items-center">
+                                    <div className="justify-center gap-1 flex items-center">
                                         <h1 className="hidden xs:block">Hi</h1>
                                         <span className="block md:hidden font-bold  lg:block ">{userName}</span>
                                         <span className="btn btn-circle btn-neutral text-primary">
@@ -142,16 +183,15 @@ export default function Navbar({ onSearch }) {
                         </div>
                     )}
                 </div>
-        </div>
+            </div>
 
             <SearchInput
-                    type="text"
-                    placeholder="Search"
-                    className="input input-bordered block md:hidden col-span-8 md:col-span-6 rounded-full w-full"
-                    value={searchQuery}
-                    onChange={handleSearchChange}
+                type="text"
+                placeholder="Search"
+                className="input input-bordered block md:hidden col-span-8 md:col-span-6 rounded-full w-full"
+                value={searchQuery}
+                onChange={handleSearchChange}
             />
-
         </div>
     );
 }

@@ -96,8 +96,8 @@ const QuestionsListCard = ({ questions, users, searchQuery, onTopicSelect  }) =>
 
             <div className="flex flex-col gap-3">
               <Link to={`/viewquestion/${question.id}`} className="flex flex-col gap-2 ">
-                  <p className=" whitespace-pre-wrap break-words text-xs xs:text-xl font-bold ">{question.title}</p>
-                  <p className=" whitespace-pre-wrap break-words text-xs xs:text-xl hover:link    min-h-[100px]">{question.content}</p>
+                  <p className=" whitespace-pre-wrap break-words text-xs xs:text-xl hover:link font-bold ">{question.title}</p>
+                  <p className=" whitespace-pre-wrap break-words text-xs xs:text-xl min-h-[100px]">{question.content}</p>
               </Link>
             </div>
 
@@ -121,7 +121,11 @@ const QuestionsListCard = ({ questions, users, searchQuery, onTopicSelect  }) =>
       {/* Menampilkan tombol "Lihat semua" jika ada lebih banyak pertanyaan untuk ditampilkan */}
       {visibleCount < filteredQuestions.length && (
         <div className="flex justify-center items-center p-5">
-          <PrimaryButton onClick={loadMore} label="Lihat semua" className="btn btn-xs bg-transparent text-secondary" />
+          <PrimaryButton
+            label={'Lihat semua'}
+            className="btn btn-xs"
+            onClick={loadMore}
+          />
         </div>
       )}
     </div>

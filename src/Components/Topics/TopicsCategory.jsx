@@ -14,7 +14,7 @@ function TopicsCategory({topics, className, onTopicSelect}) {
           <li className="p-2 rounded-md hover:bg-secondary/10" key={topic.id}>
             <PrimaryButton
               onClick={() => onTopicSelect(topic.name)}
-              className="bg-transparent hover:bg-transparent text-secondary hover:text-secondary"
+              className="bg-transparent text-start hover:bg-transparent text-secondary hover:text-secondary"
               label={topic.name}
             />
           </li>
