@@ -167,17 +167,17 @@ export default function Navbar({ onSearch }) {
                             </ul>
                         </div>
                     ) : (
-                        <div className="flex gap-1 -z-10 items-center">
+                        <div className="flex gap-1 -z-0 items-center">
                             <Link to={'/login'}>
                                 <PrimaryButton
                                     label={'Login'}
-                                    className="btn"
+                                    className="btn btn-neutral text-primary"
                                 />
                             </Link>
                             <Link to={'/register'}>
                                 <PrimaryButton
                                     label={'Register'}
-                                    className="btn"
+                                    className="btn btn-neutral text-primary"
                                 />
                             </Link>
                         </div>

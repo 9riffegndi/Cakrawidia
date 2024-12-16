@@ -44,7 +44,7 @@ function Leaderboard({users}) {
                   {index + 1}
                 </span>
                 <p className='btn btn-circle text-primary btn-neutral'>{formatUserName(user.username)}</p>
-                <p className="flex flex-col items-start justify-center">
+                <p className="flex flex-col text-xs items-start justify-center">
                   <span>{user.username}</span>
                   <span>
                     <span className="text-xs badge badge-sm badge-warning ">{user.points}</span>
@@ -57,7 +57,8 @@ function Leaderboard({users}) {
       </table>
       {visibleCount < users.length && (
         <div className="flex justify-center items-center p-5">
-          <PrimaryButton onClick={loadMore} label="Lihat lebih banyak" className="btn btn-xs bg-transparent text-secondary" />
+          <PrimaryButton onClick={loadMore} label="Lihat lebih banyak" 
+          className="btn btn-xs btn-neutral text-primary" />
         </div>
       )}
     </div>
