@@ -106,7 +106,7 @@ export default function Navbar({ onSearch }) {
     };
 
     return (
-        <div className="flex flex-col  gap-1 z-10 p-2 rounded-b-lg shadow  sticky top-0  bg-white w-full">
+        <div className="flex flex-col  gap-1 z-50 p-2 rounded-b-lg shadow  sticky top-0  bg-white w-full">
             <div className="flex justify-between md:grid xs:grid-cols-12  w-full p-2">
                 <ApplicationLogo className="col-span-3" />
                 <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
@@ -167,7 +167,7 @@ export default function Navbar({ onSearch }) {
                             </ul>
                         </div>
                     ) : (
-                        <div className="flex gap-1 z-0 items-center">
+                        <div className="flex gap-1 items-center">
                             <Link to={'/login'}>
                                 <PrimaryButton
                                     label={'Login'}
