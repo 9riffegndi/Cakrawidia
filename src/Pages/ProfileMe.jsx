@@ -177,7 +177,7 @@ export default function ProfileMe() {
 
                     <PrimaryButton
                             label={'Logout'}
-                            className='w-full rounded-2xl btn-lg btn btn-neutral text-primary'
+                            className='w-full rounded-xl btn-lg btn btn-neutral text-primary'
                             onClick={handleLogout}
                     />
 

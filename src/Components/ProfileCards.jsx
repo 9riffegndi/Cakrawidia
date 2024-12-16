@@ -33,7 +33,7 @@ const ProfileCards = ({ user }) => {
                 </div>
             </div>
 
-            <Link to="/profile">
+            <Link to="/profileMe">
                 <PrimaryButton
                     label="Lihat Profil"
                     className="w-full btn btn-neutral text-primary"
