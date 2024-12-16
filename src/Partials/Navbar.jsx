@@ -167,7 +167,7 @@ export default function Navbar({ onSearch }) {
                             </ul>
                         </div>
                     ) : (
-                        <div className="flex gap-1 -z-0 items-center">
+                        <div className="flex gap-1 z-40 items-center">
                             <Link to={'/login'}>
                                 <PrimaryButton
                                     label={'Login'}
