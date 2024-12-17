@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-// import { Helmet } from "react-helmet";
+import { Analytics } from "@vercel/analytics/react"
 import { Helmet } from "react-helmet";
 import Home from "./Pages/Home";
 import ViewQuestion from "./Pages/ViewQuestion";
@@ -11,6 +11,7 @@ import ProfileMe from "./Pages/ProfileMe";
 const App = () => {
     return (
         <Router>
+            <Analytics />
             <Routes>
                 <Route
                     path="/"
