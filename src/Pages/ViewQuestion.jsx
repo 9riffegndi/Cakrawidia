@@ -9,6 +9,8 @@ import { Helmet } from "react-helmet";
 
 // Utils
 import { localeTime } from "../Utils/localeTime"; 
+import { formatInitialsUsername } from '../Utils/formatInitialUsername'
+
 
 // Layouts
 import MainLayout from "../Layouts/MainLayout";
@@ -72,10 +74,6 @@ export default function ViewQuestion() {
         fetchData();
     }, [id]);
 
-    const formatUserName = (name) => {
-        if (!name) return "";
-        return name.length > 4 ? `${name.charAt(0)}${name.charAt(name.length - 1)}` : name;
-    };
 
     if (data.loading) {
         return (
@@ -115,7 +113,7 @@ export default function ViewQuestion() {
                     <div className="border rounded-xl border-secondary flex flex-col gap-4 p-4">
                         <div className="flex gap-1 font-bold items-center">
                             <p className="btn btn-neutral text-primary btn-circle">
-                                {formatUserName(data.question.user?.username)}
+                                {formatInitialsUsername(data.question.user?.username)}
                             </p>
                             <p>{data.question.user?.username || "Anonim"}</p>
                             <span className="hidden md:block">|</span>
@@ -140,7 +138,7 @@ export default function ViewQuestion() {
                                 >
                                     <div className="flex gap-1 font-semibold items-center">
                                         <p className="btn btn-neutral text-primary btn-circle">
-                                            {formatUserName(answer.user?.username)}
+                                            {formatInitialsUsername(answer.user?.username)}
                                         </p>
                                         <p>{answer.user?.username || "Anonim"}</p>
                                         <span>|</span>

@@ -1,12 +1,19 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
+// vercel analytics
 import { Analytics } from "@vercel/analytics/react"
+
+// Helmet
 import { Helmet } from "react-helmet";
+
+// Pages
 import Home from "./Pages/Home";
 import ViewQuestion from "./Pages/ViewQuestion";
 import Login from "./Pages/Auth/Login";
 import Register from "./Pages/Auth/Register";
 import ProfileMe from "./Pages/ProfileMe";
+
 
 const App = () => {
     return (

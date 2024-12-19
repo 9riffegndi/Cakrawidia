@@ -5,9 +5,10 @@ import PrimaryButton from "../Buttons/PrimaryButton";
 import Hero from "../Hero/Hero"; 
 
 
-
+// utils
 import { localeTime } from "../../Utils/localeTime";
 import dayjs from "dayjs";
+import { formatInitialsUsername } from "../../Utils/formatInitialUsername";
 
 
 const QuestionsListCard = ({ questions, users, searchQuery, onTopicSelect  }) => {
@@ -53,10 +54,7 @@ const QuestionsListCard = ({ questions, users, searchQuery, onTopicSelect  }) =>
   );
 
 
-  const formatUserName = (name) => {
-    if (!name) return "";
-    return name.length > 4 ? `${name.charAt(0)}${name.charAt(name.length - 1)}` : name;
-  };
+
 
   return (
     <div className="rounded-xl col-span-12 md:col-span-6 flex flex-col justify-center border border-secondary items-center">
@@ -80,7 +78,7 @@ const QuestionsListCard = ({ questions, users, searchQuery, onTopicSelect  }) =>
           <div key={question.id} className="w-full flex flex-col justify-between border-b-2 min-h-[200px] gap-4 p-5">
             <div className="flex gap-1 justify-start items-center">
               <span className="btn btn-circle btn-neutral text-primary">
-                {formatUserName(users.find((user) => user.id === question.user_id).username)}
+                {formatInitialsUsername(users.find((user) => user.id === question.user_id).username)}
               </span>
               <button 
                 onClick={() => onTopicSelect(question.topic_name)} 

@@ -11,6 +11,13 @@ import PrimaryButton from "../../Components/Buttons/PrimaryButton";
 // Layouts
 import AuthLayout from "../../Layouts/AuthLayout";
 
+
+const users = {
+    email: "asadss@gmail.com",
+    password: "password"
+
+}
+
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -57,7 +64,6 @@ const Login = () => {
                 localStorage.removeItem("userEmail");
                 localStorage.removeItem("userPassword");
             }
-
             // Arahkan ke halaman Home
             navigate("/");
 
@@ -76,6 +82,7 @@ const Login = () => {
         }
     };
 
+
     useEffect(() => {
         try {
             const savedEmail = localStorage.getItem("userEmail");
@@ -89,10 +96,11 @@ const Login = () => {
     }, []);
 
     return (
+
         <AuthLayout
             title={"Selamat datang Kembali :)"}
-            description={"Masukan email dan password untuk Login"}
-        >
+            description={"Masukan email dan password untuk Login"}>
+
             <Form onSubmit={handleLogin} className=" flex flex-col gap-2 rounded w-[50%]  md:w-[24%]">
                 {error && (
                     <div role="alert" className="alert alert-error">

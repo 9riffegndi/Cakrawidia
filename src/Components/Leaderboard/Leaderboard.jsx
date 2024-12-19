@@ -2,6 +2,11 @@
 import React, { useState } from 'react';
 import PrimaryButton from '../Buttons/PrimaryButton';
 
+// utils
+import { formatInitialsUsername } from '../../Utils/formatInitialUsername'
+
+
+
 function Leaderboard({users}) {
   const [visibleCount, setVisibleCount] = useState(15);
 
@@ -9,11 +14,6 @@ function Leaderboard({users}) {
     setVisibleCount((prevCount) => prevCount + 5);
   };
 
-
-  const formatUserName = (name) => {
-    if (!name) return "";
-    return name.length > 4 ? `${name.charAt(0)}${name.charAt(name.length - 1)}` : name;
-  };
 
   return (
     <div className="col-span-12 md:col-span-3 p-2 border-secondary border rounded-xl">
@@ -43,7 +43,7 @@ function Leaderboard({users}) {
                 >
                   {index + 1}
                 </span>
-                <p className='btn btn-circle text-primary btn-neutral'>{formatUserName(user.username)}</p>
+                <p className='btn btn-circle text-primary btn-neutral'>{formatInitialsUsername(user.username)}</p>
                 <p className="flex flex-col text-xs items-start justify-center">
                   <span>{user.username}</span>
                   <span>

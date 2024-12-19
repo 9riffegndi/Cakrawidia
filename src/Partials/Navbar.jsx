@@ -1,15 +1,21 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+
+// components
 import ApplicationLogo from "./ApplicationLogo";  
 import LabelButton from "../Components/Buttons/LabelButton"; 
-import Sidebar from "./Sidebar";
 import SearchInput from "../Components/SearchInput";
 import PrimaryButton from "../Components/Buttons/PrimaryButton";
+import Sidebar from "./Sidebar";
+
+// utils
+import { formatInitialsUsername } from '../Utils/formatInitialUsername'
+
 
 export default function Navbar({ onSearch }) {
     const [searchQuery, setSearchQuery] = useState("");
-    const [userName, setUserName] = useState(null); // Untuk menyimpan nama pengguna
+    const [username, setUserName] = useState(null); // Untuk menyimpan nama pengguna
     const [isLoading, setIsLoading] = useState(false); // Status loading
     const navigate = useNavigate();
 
@@ -148,9 +154,9 @@ export default function Navbar({ onSearch }) {
                                 ) : (
                                     <div className="justify-center gap-1 flex items-center">
                                         <h1 className="hidden xs:block">Hi</h1>
-                                        <span className="block md:hidden font-bold  lg:block ">{userName}</span>
+                                        <span className="block md:hidden font-bold  lg:block ">{username}</span>
                                         <span className="btn btn-circle btn-neutral text-primary">
-                                            {formatUserName(userName)}
+                                            {formatInitialsUsername(username)}
                                         </span>
                                     </div>
                                 )}

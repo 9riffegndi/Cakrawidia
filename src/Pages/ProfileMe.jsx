@@ -24,7 +24,6 @@ dayjs.extend(relativeTime);
 
 
 
-
 export default function ProfileMe() {
     const authToken = localStorage.getItem("authToken"); // Ambil token dari localStorage
     const { deleteAcc, handleDeleteAccChange } = useDeleteAcc(authToken);
@@ -41,7 +40,6 @@ export default function ProfileMe() {
             .map(word => word.charAt(0).toUpperCase()) // Ambil huruf pertama tiap kata
             .join('.'); // Gabungkan dengan tanda titik
     };
-
 
     const handleDeleteAcc = async () => {
         await deleteAcc();

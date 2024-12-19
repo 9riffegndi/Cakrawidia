@@ -1,15 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
+// Components
 import PrimaryButton from "./Buttons/PrimaryButton";
+
+// Utils
+import { formatInitialsUsername } from "../Utils/formatInitialUsername";
 
 const ProfileCards = ({ user }) => {
     // Access the nested user object
     const userData = user?.user;
-
-    const formatUserName = (name) => {
-        if (!name) return "";
-        return name.length > 4 ? `${name.charAt(0)}${name.charAt(name.length - 1)}` : name;
-    };
 
     // Add a check to handle cases where user might be null or undefined
     if (!userData) {
@@ -24,7 +24,7 @@ const ProfileCards = ({ user }) => {
         <div className="flex col-span-12 md:col-span-4 border min-h-[257px] justify-between p-4 border-secondary rounded-lg flex-col">
             <div className="flex md:flex-row flex-col items-center gap-2 justify-start">
                 <p className="btn btn-lg btn-circle w-[120px] h-[120px] btn-neutral text-primary text-5xl">
-                    {formatUserName(userData.username)}
+                    {formatInitialsUsername(userData.username)}
                 </p>
                 <div className="flex flex-col">
                     <p><strong>ID:</strong> {userData.id}</p>
