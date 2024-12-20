@@ -13,7 +13,7 @@ function TopicsCategory({topics, className, onTopicSelect}) {
         {topics.map((topic) => (
           <li className="list-none w-full " key={topic.id}>
             <p
-              className='md:bg-transparent  border-none shadow-none list-none md:rounded-none rounded-full flex justify-start w-max md:w-full  btn btn-xs md:btn-md'
+              className='md:bg-transparent bg-neutral text-primary md:text-secondary border-none shadow-none list-none md:rounded-none rounded-full flex justify-start w-max md:w-full  btn btn-xs md:btn-md'
               onClick={() => onTopicSelect(topic.name)}
             >
               {topic.name}

@@ -114,21 +114,11 @@ export default function Navbar({ onSearch }) {
     return (
         <div className="flex flex-col  gap-1 z-0 p-2 rounded-b-lg shadow  sticky top-0  bg-white w-full">
             <div className="flex justify-between md:grid xs:grid-cols-12  w-full p-2">
-                <ApplicationLogo className="col-span-3" />
-                <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-                <LabelButton
-                    htmlFor="my-drawer-4"
-                    src="https://img.icons8.com/?size=100&id=83195&format=png&color=FFFFFF"
-                    className="flex md:hidden btn btn-md btn-circle p-1"
-                />
-                <div className="drawer-side">
-                    <LabelButton
-                        htmlFor="my-drawer-4"
-                        ariaLabel="close sidebar"
-                        className="drawer-overlay rounded-none"
-                    />
-                </div>
-
+                <ApplicationLogo className="col-span-3 " />
+                
+                <a href="/" className="flex md:hidden p-1">
+                    <img src="/Assets/Img/logo.png" className="w-[70px]"  />
+                </a>
                 <SearchInput
                     type="text"
                     placeholder="Search"
