@@ -7,7 +7,7 @@ import ApplicationLogo from "./ApplicationLogo";
 import LabelButton from "../Components/Buttons/LabelButton"; 
 import SearchInput from "../Components/SearchInput";
 import PrimaryButton from "../Components/Buttons/PrimaryButton";
-import Sidebar from "./Sidebar";
+// import Sidebar from "./Sidebar";
 
 // utils
 import { formatInitialsUsername } from '../Utils/formatInitialUsername'
@@ -115,7 +115,7 @@ export default function Navbar({ onSearch }) {
         <div className="flex flex-col  gap-1 z-0 p-2 rounded-b-lg shadow  sticky top-0  bg-white w-full">
             <div className="flex justify-between md:grid xs:grid-cols-12  w-full p-2">
                 <ApplicationLogo className="col-span-3" />
-                <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+                <input id="my-drawer" type="checkbox" className="drawer-toggle" />
                 <LabelButton
                     htmlFor="my-drawer-4"
                     src="https://img.icons8.com/?size=100&id=83195&format=png&color=FFFFFF"
@@ -127,7 +127,6 @@ export default function Navbar({ onSearch }) {
                         ariaLabel="close sidebar"
                         className="drawer-overlay rounded-none"
                     />
-                    <Sidebar />
                 </div>
 
                 <SearchInput

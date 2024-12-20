@@ -18,7 +18,9 @@ import Footer from '../Partials/Footer';
 import dayjs from 'dayjs';
 import "dayjs/locale/id";
 import relativeTime from "dayjs/plugin/relativeTime";
+import id from 'dayjs/locale/id';
 dayjs.extend(relativeTime);
+dayjs.locale(id);
 
 
 

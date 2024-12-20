@@ -12,12 +12,6 @@ import PrimaryButton from "../../Components/Buttons/PrimaryButton";
 import AuthLayout from "../../Layouts/AuthLayout";
 
 
-const users = {
-    email: "asadss@gmail.com",
-    password: "password"
-
-}
-
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");

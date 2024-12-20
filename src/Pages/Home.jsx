@@ -11,7 +11,6 @@ import Footer from "../Partials/Footer";
 import TopicsCategory from "../Components/Topics/TopicsCategory";
 import QuestionsListCard from "../Components/Questions/QuestionsListCard";
 import Leaderboard from "../Components/Leaderboard/Leaderboard";
-
 // Buttons
 import ToolipBtn from "../Components/Buttons/ToolipBtn";
 
@@ -22,16 +21,14 @@ import { fetchQuestions } from "../Services/questionService";
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
-
   const [loading, setLoading] = useState(true);
-  
   const [error, setError] = useState(null);
 
   const [users, setUsers] = useState([]);
   const [topics, setTopics] = useState([]);
   const [questions, setQuestions] = useState([]);
 
-  useEffect(() => {
+  useEffect(() => { 
     const loadData = async () => {
       setLoading(true);
       setError(null);
@@ -68,7 +65,7 @@ export default function Home() {
 
     loadData();
   }, []);
-
+  
   // Loading atau Error State
   if (loading) return <div className="flex items-center justify-center h-screen bg-gray-200"><span className="loading loading-infinity loading-lg"></span></div>;
   if (error) return <p>Error: {error}</p>;
@@ -87,7 +84,6 @@ export default function Home() {
           onTopicSelect={setSearchQuery}
           searchQuery={searchQuery}
         />
-
         {/* Kirim data users ke Leaderboard */}
         <Leaderboard users={users} />
       </GridLayout>
