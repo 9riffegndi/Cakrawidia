@@ -23,6 +23,7 @@ import Footer from "../Partials/Footer";
 import ProfileCards from "../Components/ProfileCards";
 import Leaderboard from "../Components/Leaderboard/Leaderboard";
 import ModalAnswers from "../Components/Questions/ModalAnswers";
+import BreadCrumbs from "../Components/Questions/BreadCrumbs";
 
 
 
@@ -107,6 +108,7 @@ export default function ViewQuestion() {
                 <title>{data.question.title} - Cakrawidia</title>
                 <meta name="description" content={data.question.content} />
             </Helmet>
+                <BreadCrumbs />
             <GridLayout>
                 {/* Kolom utama */}
                 <div className="col-span-12 md:col-span-8 flex flex-col gap-3 min-h-screen">

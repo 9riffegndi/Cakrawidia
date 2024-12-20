@@ -5,7 +5,7 @@ const SearchInput = ({ value, onChange, placeholder = "Search", className = "" }
         <input
             type="text"
             placeholder={placeholder}
-            className={`input input-rounded-full w-full  border-secondary ${className}`}
+            className={`input  w-full  border-secondary ${className}`}
             value={value}
             onChange={onChange}
         />
