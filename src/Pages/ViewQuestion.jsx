@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Helmet } from "react-helmet";
+import LikeQuestion from "../Components/Likes/LikeQuestion";
 
 // Utils
 import { localeTime } from "../Utils/localeTime"; 
@@ -135,7 +136,7 @@ export default function ViewQuestion() {
                         </div>
                         <h1 className="font-bold text-2xl">{data.question.title}</h1>
                         <p className="text-lg">{data.question.content}</p>
-                        
+                        <LikeQuestion />
                         <ModalAnswers />
                     </div>
 

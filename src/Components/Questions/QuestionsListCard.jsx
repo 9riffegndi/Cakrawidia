@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import PrimaryButton from "../Buttons/PrimaryButton"; 
 import Hero from "../Hero/Hero"; 
 
-
 // utils
 import { localeTime } from "../../Utils/localeTime";
 import dayjs from "dayjs";
@@ -57,7 +56,7 @@ const QuestionsListCard = ({ questions, users, searchQuery, onTopicSelect  }) =>
 
 
   return (
-    <div className="rounded-xl col-span-12 md:col-span-6 flex flex-col justify-center border border-secondary items-center">
+    <div className="rounded-xl  col-span-12 md:col-span-6 flex flex-col justify-center border border-secondary items-center">
       <Hero /> {/* Menampilkan Hero banner */}
       <div className="border-t-2 flex p-4 w-full justify-start">
         {/* Dropdown untuk memilih urutan pengurutan */}
@@ -100,7 +99,10 @@ const QuestionsListCard = ({ questions, users, searchQuery, onTopicSelect  }) =>
             </div>
 
 
-            <div className="flex w-full justify-end">
+            <div className="flex w-full items-center  justify-between">
+              <div className="flex items-center gap-1">
+                <p>{question.likes}</p>
+              </div>
               <Link to={`/viewquestion/${question.id}`} >
                 <PrimaryButton label="Jawab" className="btn btn-xs bg-transparent text-secondary hover:text-primary" /> {/* Tombol jawab */}
               </Link>
