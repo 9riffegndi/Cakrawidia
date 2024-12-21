@@ -1,11 +1,9 @@
-import { useFetchMe } from "../Hooks/useFecthMe";
-
 
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Helmet } from "react-helmet";
-
 
 // Utils
 import { localeTime } from "../Utils/localeTime"; 
@@ -24,6 +22,7 @@ import ProfileCards from "../Components/ProfileCards";
 import Leaderboard from "../Components/Leaderboard/Leaderboard";
 import ModalAnswers from "../Components/Questions/ModalAnswers";
 import BreadCrumbs from "../Components/Questions/BreadCrumbs";
+import PrimaryButton from "../Components/Buttons/PrimaryButton";
 
 
 
@@ -86,10 +85,21 @@ export default function ViewQuestion() {
 
     if (data.error) {
         return (
-            <div className="flex items-center justify-center h-screen">
+            <div className="flex flex-col gap-3   items-center justify-center h-screen">
                 <p>Error: {data.error}</p>
+                
+                <Link
+                to={"/"}
+                >
+                <PrimaryButton
+                label="Kembali ke Beranda"
+                className="w-full btn btn-neutral text-primary"
+                
+                />
+                </Link>
+
             </div>
-        );
+            );
     }
 
     if (!data.question) {

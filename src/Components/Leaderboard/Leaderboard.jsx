@@ -16,8 +16,8 @@ function Leaderboard({users}) {
 
 
   return (
-    <div className="col-span-12 md:col-span-3 p-2 border-secondary border rounded-xl">
-      <div className="flex gap-1 justify-start rounded-t  p-2 items-center border-b border-secondary">
+    <div className="col-span-12 md:col-span-3  border-secondary border rounded-xl">
+      <div className="flex gap-1 bg-yellow-200 justify-start rounded-t-xl  p-2 items-center border-b border-secondary">
       <img className='w-[35px]' src="https://img.icons8.com/?size=100&id=IZE9JtMlZ5Df&format=png&color=FAB005"/>
       <h1 className="font-bold ">Pengguna Cakrawidia</h1>
       </div>
