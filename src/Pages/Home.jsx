@@ -7,6 +7,10 @@ import GridLayout from "../Layouts/GridLayout";
 import Navbar from "../Partials/Navbar";
 import Footer from "../Partials/Footer";
 
+// loaders
+import HomeLoading from "../Components/Loading/Pages/HomeLoading";
+
+
 // Components
 import TopicsCategory from "../Components/Topics/TopicsCategory";
 import QuestionsListCard from "../Components/Questions/QuestionsListCard";
@@ -67,7 +71,9 @@ export default function Home() {
   }, []);
   
   // Loading atau Error State
-  if (loading) return <div className="flex items-center justify-center h-screen bg-gray-200"><span className="loading loading-infinity loading-lg"></span></div>;
+  if (loading) return (
+    <HomeLoading />
+  )
   if (error) return <p>Error: {error}</p>;
 
   return (

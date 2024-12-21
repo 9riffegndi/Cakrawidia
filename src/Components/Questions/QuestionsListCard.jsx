@@ -11,8 +11,6 @@ import { formatInitialsUsername } from "../../Utils/formatInitialUsername";
 
 
 const QuestionsListCard = ({ questions, users, searchQuery, onTopicSelect  }) => {
-  // const { users } = useUsers();
-  // const { questions, loading } = useFetchQuestions(); // Mengambil data pertanyaan menggunakan hook
   const [visibleCount, setVisibleCount] = useState(5); // Menyimpan jumlah pertanyaan yang ditampilkan
   const [sortBy, setSortBy] = useState("created_at"); // Menyimpan kriteria pengurutan (misalnya berdasarkan tanggal)
   const [sortOrder, setSortOrder] = useState("desc"); // Menyimpan urutan pengurutan (asc/desc)
@@ -101,7 +99,7 @@ const QuestionsListCard = ({ questions, users, searchQuery, onTopicSelect  }) =>
 
             <div className="flex w-full items-center  justify-between">
               <div className="flex items-center gap-1">
-                <p>{question.likes}</p>
+                {/* <p>{question.likes}</p> */}
               </div>
               <Link to={`/viewquestion/${question.id}`} >
                 <PrimaryButton label="Jawab" className="btn btn-xs bg-transparent text-secondary hover:text-primary" /> {/* Tombol jawab */}
