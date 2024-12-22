@@ -43,8 +43,8 @@ export default function ProfileMeLoading() {
                     </div>
                     {/* Email and Joining Date */}
                     <div className="flex  flex-col justify-center gap-2 items-start w-full">
-                        <div className="w-[200px] h-[20px] bg-gray-300 animate-pulse rounded mb-2"></div>
-                        <div className="w-[400px] h-[20px] bg-gray-300 animate-pulse rounded"></div>
+                        <div className="w-1/2 h-[20px] bg-gray-300 animate-pulse rounded mb-2"></div>
+                        <div className="w-full h-[20px] bg-gray-300 animate-pulse rounded"></div>
                     </div>
 
                     {/* Edit Profile */}
