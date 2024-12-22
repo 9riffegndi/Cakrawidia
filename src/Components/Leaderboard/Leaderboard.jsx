@@ -26,7 +26,7 @@ function Leaderboard({users, className=''}) {
 
 
   return (
-    <div className={`col-span-12 md:col-span-3 sticky h-[350px]  flex flex-col justify-between  top-20  border-secondary border rounded-xl ${className}`}>
+    <div className={`col-span-12 md:col-span-3 sticky h-[350px]  flex flex-col justify-between  top-10  border-secondary border rounded-xl ${className}`}>
       
       <div className="flex gap-1 bg-yellow-200 justify-start rounded-t-xl  p-2 items-center border-b border-secondary">
         <img className='w-[35px]' src="https://img.icons8.com/?size=100&id=9tHbFVbHMO7a&format=png&color=FAB005"/>

@@ -117,7 +117,7 @@ export default function ViewQuestion() {
             <BreadCrumbs/>
             <GridLayout>
                 {/* Kolom utama */}
-                <div className="col-span-12 md:col-span-8 flex flex-col gap-3 min-h-screen">
+                <div className=" col-span-12 md:col-span-8 flex flex-col gap-3 min-h-screen">
                     <div className="border rounded-xl border-secondary flex flex-col gap-4 p-4">
                         <div className="flex gap-1 font-bold items-center">
                             <p className="btn btn-neutral text-primary btn-circle">
@@ -167,7 +167,7 @@ export default function ViewQuestion() {
                 {/* Kolom samping */}
                 <div className="flex min-h-screen flex-col gap-3 col-span-12 md:col-span-4">
                     <ProfileCards user={data.profil} />
-                    <Leaderboard className={"top-10"}  users={data.users} />
+                    <Leaderboard className={"z-10 top-0"}  users={data.users} />
                 </div>
                 
             </GridLayout>

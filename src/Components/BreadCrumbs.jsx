@@ -8,7 +8,7 @@ const handleRefresh = () => {
 
 export default function BreadCrumbs() {
     return (
-            <div className=" breadcrumbs top-0 z-0 sticky bg-primary text-sm flex w-full items-center justify-start">
+            <div className=" breadcrumbs top-0 z-10 sticky bg-primary text-sm flex w-full items-center justify-start">
             <ul className="ml-3">
                 <li >
                 <Link

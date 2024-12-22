@@ -74,7 +74,7 @@ export default function Home() {
   if (loading) return (
     <HomeLoading />
   )
-  if (error) return <p>Error: {error}</p>;
+  if (error) return <p>{error}</p>;
 
   return (
     <MainLayout>
