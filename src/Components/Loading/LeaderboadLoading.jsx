@@ -1,14 +1,14 @@
 import React from 'react';
 
-function LeaderboardLoading() {
+function LeaderboardLoading({className=''}) {
   return (
-    <div className="col-span-12 md:col-span-3  border rounded-xl">
+    <div className={`col-span-12 md:col-span-3 h-max   border rounded-xl ${className}`}>
       <div className="flex gap-1 bg-yellow-200 justify-start rounded-t-xl p-2 items-center border-b ">
         <div className="w-[35px] h-[35px] bg-gray-300 rounded-full animate-pulse"></div>
         <div className="w-1/2 h-5 bg-gray-300 rounded animate-pulse"></div>
       </div>
-      <div className="flex flex-col min-h-screen mt-2">
-        {Array.from({ length: 15 }).map((_, index) => (
+      <div className="flex flex-col  mt-2">
+        {Array.from({ length:5 }).map((_, index) => (
           <div
             key={index}
             className="flex p-1 font-medium items-center justify-start gap-2 animate-pulse"

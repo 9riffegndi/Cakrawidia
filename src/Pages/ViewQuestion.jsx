@@ -23,6 +23,7 @@ import GridLayout from "../Layouts/GridLayout";
 
 // Partials
 import Footer from "../Partials/Footer";
+import ViewQuestionsLoading from "../Components/Loading/Pages/ViewQuestionsLoading";
 export default function ViewQuestion() {
 
     const { id } = useParams();
@@ -74,9 +75,7 @@ export default function ViewQuestion() {
 
     if (data.loading) {
         return (
-            <div className="flex items-center justify-center h-screen bg-gray-200">
-                <span className="loading loading-infinity loading-lg"></span>
-            </div>
+            <ViewQuestionsLoading/>
         );
     }
 
