@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import Form from "../../Components/Form";
 import InputPost from "../../Components/InputPost";
 import PrimaryButton from "../../Components/Buttons/PrimaryButton";
-
+import ErrorAlert from "../../Components/Alert/ErrorAlert";
 // Layouts
 import AuthLayout from "../../Layouts/AuthLayout";
 
@@ -73,9 +73,9 @@ const Register = () => {
                 className="flex flex-col gap-2 rounded  w-[90%]  md:w-[24%] ">
 
                 {error && (
-                    <div role="alert" className="alert alert-error">
-                        <span className="text-xs">{error}</span>
-                    </div>
+                    <ErrorAlert
+                        text={error}
+                    />
                 )}
 
                 <InputPost
