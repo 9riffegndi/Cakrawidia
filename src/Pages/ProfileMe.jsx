@@ -19,6 +19,7 @@ import dayjs from 'dayjs';
 import "dayjs/locale/id";
 import relativeTime from "dayjs/plugin/relativeTime";
 import id from 'dayjs/locale/id';
+import ProfileMeLoading from '../Components/Loading/Pages/ProfileMeLoading';
 dayjs.extend(relativeTime);
 dayjs.locale(id);
 
@@ -63,12 +64,7 @@ export default function ProfileMe() {
 
     if(isLoading) {
         return (
-                <MainLayout>
-                    <div className="min-h-screen flex w-full items-center justify-center">
-                        <span className="bg-gray-300 loading loading-infinity loading-lg"></span>
-                    </div>
-                </MainLayout>
-            
+            <ProfileMeLoading/>
         );
     }
 

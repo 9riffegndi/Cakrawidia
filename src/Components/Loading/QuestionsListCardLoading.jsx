@@ -47,6 +47,7 @@ const QuestionsListCardLoading = () => {
         <div className="w-32 h-10 bg-gray-300 rounded"></div>
       </div>
     </div>
+    
   );
 };
 

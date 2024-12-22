@@ -5,6 +5,7 @@ import LeaderboardLoading from "../LeaderboadLoading"
 import QuestionsListCardLoading from "../QuestionsListCardLoading"
 import TopicsCategoryLoading from "../TopicsCategoryLoading"
 import NavbarLoading from "../NavbarLoading"
+import FooterLoading from "../FooterLoading"
 
 
 
@@ -17,6 +18,7 @@ export default function HomeLoading() {
                 <QuestionsListCardLoading/>
                 <LeaderboardLoading/>
             </GridLayout>
+            <FooterLoading/>
         </MainLayout>
     )
 }

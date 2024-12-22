@@ -5,6 +5,7 @@ import LeaderboardLoading from "../LeaderboadLoading"
 import QuestionsListCardLoading from "../QuestionsListCardLoading"
 import TopicsCategoryLoading from "../TopicsCategoryLoading"
 import NavbarLoading from "../NavbarLoading"
+import FooterLoading from "../FooterLoading"
 
 
 
@@ -46,6 +47,7 @@ export default function ViewQuestionsLoading() {
                 {/* Kolom samping */}
                 <LeaderboardLoading className="col-span-12 md:col-span-4" />
             </GridLayout>
+            <FooterLoading />
         </MainLayout>
     )
 }
