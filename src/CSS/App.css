@@ -10,4 +10,36 @@ body {
 
 }
 
+/* Custom class to hide scrollbar */
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+  scrollbar-width: none;  /* For Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;  /* For Chrome, Safari, and Opera */
+}
+
+.color-scrollbar {
+  /* Sesuaikan lebar scrollbar */
+  scrollbar-width: thin; /* Pilihan: auto, thin, none */
+
+  /* Sesuaikan warna tombol dan latar belakang scrollbar */
+  scrollbar-color: #000000 #fff; /* Warna tombol biru dan latar belakang abu-abu muda */
+}
+
+/* Untuk browser berbasis Webkit (Chrome, Safari) */
+.color-scrollbar::-webkit-scrollbar {
+  width: 8px; /* Sesuaikan lebar scrollbar */
+}
+
+.color-scrollbar::-webkit-scrollbar-track {
+  background: #E0E0E0; /* Warna latar belakang scrollbar */
+  border-radius: 10px; /* Radius sudut */
+}
+
+.color-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #0000FF; /* Warna tombol scrollbar */
+  border-radius: 10px; /* Radius sudut */
+}
 

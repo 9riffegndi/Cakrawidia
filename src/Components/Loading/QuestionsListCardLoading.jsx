@@ -4,7 +4,10 @@ const QuestionsListCardLoading = () => {
   return (
     <div className="rounded-xl col-span-12 md:col-span-6 flex flex-col justify-center border border-gray-300 items-center animate-pulse min-h-screen">
       {/* Hero Banner */}
-      <div className="w-full h-32 bg-gray-300 rounded-t-xl mb-4"></div>
+      <div className="flex flex-col gap-10 items-center justify-center w-full h-[300px] bg-gray-300 rounded-t-xl ">
+        <p className="w-[70%] rounded-lg h-16 animate-pulse bg-gray-200"></p>
+        <div className="w-1/2 h-12 rounded-full animate-pulse bg-gray-200"></div>
+      </div>
 
       {/* Dropdown Pengurutan */}
       <div className="border-t-2 flex p-4 w-full justify-start">
