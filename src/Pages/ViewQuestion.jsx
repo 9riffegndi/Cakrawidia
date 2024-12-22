@@ -117,8 +117,8 @@ export default function ViewQuestion() {
             </Helmet>
             <BreadCrumbs/>
             <GridLayout>
-                                {/* Kolom utama */}
-                                <div className="col-span-12 md:col-span-8 flex flex-col gap-3 min-h-screen">
+                {/* Kolom utama */}
+                <div className="col-span-12 md:col-span-8 flex flex-col gap-3 min-h-screen">
                     <div className="border rounded-xl border-secondary flex flex-col gap-4 p-4">
                         <div className="flex gap-1 font-bold items-center">
                             <p className="btn btn-neutral text-primary btn-circle">

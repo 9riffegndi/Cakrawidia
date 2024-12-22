@@ -11,7 +11,7 @@ function TopicsCategoryLoading() {
       {/* Skeletons for Topics */}
       <ul className="list flex items-center md:flex-col overflow overflow-y-auto gap-1 w-full">
         {Topics.map((_, index) => (
-          <li className="bg-gray-300  md:w-full  btn-wide btn btn-xs md:btn  rounded-md md:rounded-none" key={index}></li>
+          <li className="bg-gray-300  md:w-full   btn-wide btn btn-xs md:btn  rounded-full md:rounded-none" key={index}></li>
         ))}
       </ul>
     </div>

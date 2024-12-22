@@ -72,7 +72,7 @@ const QuestionsListCard = ({ questions, users, searchQuery, onTopicSelect  }) =>
       {/* Menampilkan pertanyaan yang sudah difilter dan diurutkan */}
       {filteredQuestions.length > 0 ? (
         filteredQuestions.slice(0, visibleCount).map((question) => (
-          <div key={question.id} className="w-full flex flex-col justify-between border-b-2 min-h-[200px] gap-4 p-5">
+          <div key={question.id} className="w-full  flex flex-col justify-between border-b-2 min-h-[200px] gap-4 p-5">
             <div className="flex gap-1 justify-start items-center">
               <span className="btn btn-circle btn-neutral text-primary">
                 {formatInitialsUsername(users.find((user) => user.id === question.user_id).username)}
