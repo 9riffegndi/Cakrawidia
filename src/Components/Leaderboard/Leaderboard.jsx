@@ -80,7 +80,6 @@ function Leaderboard({users, className=''}) {
         </table>
       </ul>
         <div className="flex  flex-col  border-t border-secondary gap-1 p-2 justify-center items-center">
-            <h1 className='font-bold '>Tampilkan</h1>
             <div className="flex justify-center items-center">
               {visibleCount > increment && (
                 <PrimaryButton

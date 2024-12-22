@@ -22,6 +22,7 @@ import ToolipBtn from "../Components/Buttons/ToolipBtn";
 import { fetchUsers } from "../Services/leaderboardService";
 import { fetchTopics } from "../Services/topicService";
 import { fetchQuestions } from "../Services/questionService";
+import NoInternet from "../Components/Error/NoInternet";
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -74,7 +75,11 @@ export default function Home() {
   if (loading) return (
     <HomeLoading />
   )
-  if (error) return <p>{error}</p>;
+  if (error) return (
+    <NoInternet />
+  );
+  
+  ;
 
   return (
     <MainLayout>

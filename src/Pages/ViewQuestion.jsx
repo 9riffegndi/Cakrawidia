@@ -1,12 +1,11 @@
 import { Helmet } from "react-helmet";
 import { useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import NoInternet from '../Components/Error/NoInternet'
 import axios from "axios";
 
 
 // components
-import PrimaryButton from "../Components/Buttons/PrimaryButton";
 import BreadCrumbs from "../Components/BreadCrumbs";
 import Leaderboard from "../Components/Leaderboard/Leaderboard";
 import ProfileCards from "../Components/ProfileCards";
@@ -81,20 +80,7 @@ export default function ViewQuestion() {
 
     if (data.error) {
         return (
-            <div className="flex flex-col gap-3   items-center justify-center h-screen">
-                <p>Error: {data.error}</p>
-                
-                <Link
-                to={"/"}
-                >
-                <PrimaryButton
-                label="Kembali ke Beranda"
-                className="w-full btn btn-neutral text-primary"
-                
-                />
-                </Link>
-
-            </div>
+            <NoInternet/>
             );
     }
 
