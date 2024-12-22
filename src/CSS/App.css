@@ -19,18 +19,16 @@ body {
 .hide-scrollbar::-webkit-scrollbar {
   display: none;  /* For Chrome, Safari, and Opera */
 }
-
 .color-scrollbar {
-  /* Sesuaikan lebar scrollbar */
-  scrollbar-width: thin; /* Pilihan: auto, thin, none */
-
-  /* Sesuaikan warna tombol dan latar belakang scrollbar */
-  scrollbar-color: #3D4451  white; /* Warna tombol biru dan latar belakang abu-abu muda */
+  /* Mendukung Firefox */
+  scrollbar-width: thin; /* Opsi: auto, thin, none */
+  scrollbar-color: #3D4451 white; /* Warna thumb dan track */
 }
 
-/* Untuk browser berbasis Webkit (Chrome, Safari) */
+/* Untuk browser berbasis Webkit (Chrome, Safari, Edge terbaru) */
 .color-scrollbar::-webkit-scrollbar {
-  width: 2px; /* Sesuaikan lebar scrollbar */
+  width: 2px; /* Lebar scrollbar */
+  height: 0px; /* Tinggi scrollbar horizontal */
 }
 
 .color-scrollbar::-webkit-scrollbar-track {
@@ -39,7 +37,11 @@ body {
 }
 
 .color-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #0000FF; /* Warna tombol scrollbar */
-  border-radius: 10px; /* Radius sudut */
+  background-color: #3D4451; /* Warna thumb scrollbar */
+  border-radius: 20px; /* Radius sudut */
+  border: 1px solid red; /* Tambahan untuk kontras */
 }
 
+.color-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #0000FF; /* Warna saat hover */
+}

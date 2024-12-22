@@ -48,24 +48,24 @@ function Leaderboard({users, className=''}) {
               <tr className="flex p-1 font-medium items-center justify-start" key={user.id}>
                 <td className="flex items-center gap-2 justify-start">
                   <span
-                    className={`btn-md btn btn-circle hover:btn-lg transition-all ease-in duration-100 flex items-center justify-center rounded-full 
+                    className={`btn md:btn-sm btn-md btn-circle transition-all ease-in duration-100 flex items-center justify-center rounded-full 
                       ${index === 0
-                        ? 'bg-yellow-400 text-primary cursor-default hover:text-2xl hover:animate-pulse hover:bg-yellow-300'
+                        ? 'bg-yellow-400 text-primary cursor-default  hover:animate-pulse hover:bg-yellow-300'
                         : ''
                     }
                     ${index  === 1
-                        ? 'bg-slate-300 text-primary cursor-default hover:text-2xl hover:animate-pulse hover:bg-slate-300'
+                        ? 'bg-slate-300 text-primary cursor-default hover:animate-pulse hover:bg-slate-300'
                         : ''
                     }
                     ${index  === 2
-                        ? 'bg-yellow-900 text-primary cursor-default hover:text-2xl hover:animate-pulse hover:bg-yellow-700'
+                        ? 'bg-yellow-900 text-primary cursor-default  hover:animate-pulse hover:bg-yellow-700'
                         : ''
                     }
                     `}
                   >
                     {index + 1}
                   </span>
-                  <p className='btn btn-circle text-primary btn-neutral'>{formatInitialsUsername(user.username)}</p>
+                  <p className=' btn md:btn-sm btn-md btn-circle text-primary btn-neutral'>{formatInitialsUsername(user.username)}</p>
                   <p className="flex flex-col text-xs items-start justify-center">
                     <span>{user.username}</span>
                     <span>
