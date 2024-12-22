@@ -1,15 +1,21 @@
-
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
-import axios from "axios";
 import { Helmet } from "react-helmet";
-import LikeQuestion from "../Components/Likes/LikeQuestion";
+import { useEffect, useState} from "react";
+import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
-// Utils
-import { localeTime } from "../Utils/localeTime"; 
+
+// components
+import PrimaryButton from "../Components/Buttons/PrimaryButton";
+import BreadCrumbs from "../Components/Questions/BreadCrumbs";
+import Leaderboard from "../Components/Leaderboard/Leaderboard";
+import ProfileCards from "../Components/ProfileCards";
+import ModalAnswers from "../Components/Questions/ModalAnswers";
+
+
+// utils
+import { localeTime } from "../Utils/localeTime";
 import { formatInitialsUsername } from '../Utils/formatInitialUsername'
-
 
 // Layouts
 import MainLayout from "../Layouts/MainLayout";
@@ -17,18 +23,8 @@ import GridLayout from "../Layouts/GridLayout";
 
 // Partials
 import Footer from "../Partials/Footer";
-
-// Components
-import ProfileCards from "../Components/ProfileCards";
-import Leaderboard from "../Components/Leaderboard/Leaderboard";
-import ModalAnswers from "../Components/Questions/ModalAnswers";
-import BreadCrumbs from "../Components/Questions/BreadCrumbs";
-import PrimaryButton from "../Components/Buttons/PrimaryButton";
-
-
-
-
 export default function ViewQuestion() {
+
     const { id } = useParams();
     const [data, setData] = useState({
         question: null,
@@ -111,7 +107,7 @@ export default function ViewQuestion() {
         );
     }
 
-    
+
 
     return (
         <MainLayout>
@@ -119,10 +115,10 @@ export default function ViewQuestion() {
                 <title>{data.question.title} - Cakrawidia</title>
                 <meta name="description" content={data.question.content} />
             </Helmet>
-                <BreadCrumbs />
+            <BreadCrumbs/>
             <GridLayout>
-                {/* Kolom utama */}
-                <div className="col-span-12 md:col-span-8 flex flex-col gap-3 min-h-screen">
+                                {/* Kolom utama */}
+                                <div className="col-span-12 md:col-span-8 flex flex-col gap-3 min-h-screen">
                     <div className="border rounded-xl border-secondary flex flex-col gap-4 p-4">
                         <div className="flex gap-1 font-bold items-center">
                             <p className="btn btn-neutral text-primary btn-circle">
@@ -136,7 +132,6 @@ export default function ViewQuestion() {
                         </div>
                         <h1 className="font-bold text-2xl">{data.question.title}</h1>
                         <p className="text-lg">{data.question.content}</p>
-                        <LikeQuestion />
                         <ModalAnswers />
                     </div>
 
@@ -173,11 +168,12 @@ export default function ViewQuestion() {
                 {/* Kolom samping */}
                 <div className="flex min-h-screen flex-col gap-3 col-span-12 md:col-span-4">
                     <ProfileCards user={data.profil} />
-                    <Leaderboard users={data.users} />
+                    <Leaderboard className={"top-1"}  users={data.users} />
                 </div>
+                
             </GridLayout>
-            
             <Footer />
         </MainLayout>
-    );
+    )
+    
 }

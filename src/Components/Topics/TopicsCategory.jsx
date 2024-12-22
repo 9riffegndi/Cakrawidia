@@ -4,7 +4,7 @@ import React from 'react';
 function TopicsCategory({topics, className, onTopicSelect}) {
   return (
     
-    <div className= " h-max border sticky  top-20 color-scrollbar overflow-y-auto border-secondary justify-start items-start  rounded-md md:col-span-3 p-4 md:p-0 col-span-12  md:flex-col flex  md:gap-0 gap-2">
+    <div className= " h-max border sticky   top-20 color-scrollbar overflow-y-auto border-secondary justify-start items-start  rounded-md md:col-span-3 p-2 md:p-0 md:pb-1 col-span-12  md:flex-col flex  md:gap-0 gap-2">
       
       <h1 onClick={() => onTopicSelect("")} className=" cursor-pointer bg-neutral md:p-4 p-1 font-semibold md:font-bold text-primary md:rounded-none text-xs md:text-sm rounded-full w-max md:w-full">SemuaTopik</h1>
     
