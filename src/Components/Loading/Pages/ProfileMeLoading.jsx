@@ -1,10 +1,11 @@
 import MainLayout from '../../../Layouts/MainLayout';
-import PrimaryButton from '../../Buttons/PrimaryButton';
+import BreadCrumbsLoading from '../BreadCrumbsLoading';
 import FooterLoading from '../FooterLoading';
 
 export default function ProfileMeLoading() {
     return (
         <MainLayout className="justify-center items-center">
+            <BreadCrumbsLoading />
             {/* Profile Header */}
             <div className="flex flex-col bg-gray-200 animate-pulse md:flex-row justify-center items-center p-2 gap-3 w-full min-h-[170px]">
                 <div className="w-[150px] h-[150px] bg-gray-300 animate-pulse rounded-full"></div>

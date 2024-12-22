@@ -7,7 +7,7 @@ import axios from "axios";
 
 // components
 import PrimaryButton from "../Components/Buttons/PrimaryButton";
-import BreadCrumbs from "../Components/Questions/BreadCrumbs";
+import BreadCrumbs from "../Components/BreadCrumbs";
 import Leaderboard from "../Components/Leaderboard/Leaderboard";
 import ProfileCards from "../Components/ProfileCards";
 import ModalAnswers from "../Components/Questions/ModalAnswers";

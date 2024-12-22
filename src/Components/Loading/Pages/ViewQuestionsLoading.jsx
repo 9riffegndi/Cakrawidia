@@ -2,9 +2,7 @@
 import MainLayout from "../../../Layouts/MainLayout"
 import GridLayout from "../../../Layouts/GridLayout"
 import LeaderboardLoading from "../LeaderboadLoading"
-import QuestionsListCardLoading from "../QuestionsListCardLoading"
-import TopicsCategoryLoading from "../TopicsCategoryLoading"
-import NavbarLoading from "../NavbarLoading"
+import BreadCrumbsLoading from "../BreadCrumbsLoading"
 import FooterLoading from "../FooterLoading"
 
 
@@ -12,6 +10,7 @@ import FooterLoading from "../FooterLoading"
 export default function ViewQuestionsLoading() {
     return (
         <MainLayout>
+            <BreadCrumbsLoading />
             <GridLayout>
                 {/* Kolom utama */}
                 <div className="col-span-12 md:col-span-8 flex flex-col gap-3 min-h-screen">
