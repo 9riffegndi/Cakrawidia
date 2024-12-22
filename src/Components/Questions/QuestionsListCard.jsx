@@ -120,7 +120,7 @@ const QuestionsListCard = ({ questions, users, searchQuery, onTopicSelect  }) =>
       {visibleCount < filteredQuestions.length && (
         <div className="flex justify-center items-center p-5">
           <PrimaryButton
-            label={'Lihat semua'}
+            label={'Lihat lebih banyak'}
             className="btn btn-xs"
             onClick={loadMore}
           />

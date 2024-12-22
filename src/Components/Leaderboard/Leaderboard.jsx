@@ -29,7 +29,7 @@ function Leaderboard({users, className=''}) {
     <div className={`col-span-12 md:col-span-3 sticky h-[350px]  flex flex-col justify-between  top-20  border-secondary border rounded-xl ${className}`}>
       
       <div className="flex gap-1 bg-yellow-200 justify-start rounded-t-xl  p-2 items-center border-b border-secondary">
-        <img className='w-[35px]' src="https://img.icons8.com/?size=100&id=IZE9JtMlZ5Df&format=png&color=FAB005"/>
+        <img className='w-[35px]' src="https://img.icons8.com/?size=100&id=9tHbFVbHMO7a&format=png&color=FAB005"/>
         <h1 className="font-bold ">Bintang Cakrawidia</h1>
       </div>
       
@@ -48,11 +48,20 @@ function Leaderboard({users, className=''}) {
               <tr className="flex p-1 font-medium items-center justify-start" key={user.id}>
                 <td className="flex items-center gap-2 justify-start">
                   <span
-                    className={`btn-md btn btn-circle hover:btn-lg transition-all ease-in duration-100 flex items-center justify-center rounded-full ${
-                      index >= 0 && index <= 2
+                    className={`btn-md btn btn-circle hover:btn-lg transition-all ease-in duration-100 flex items-center justify-center rounded-full 
+                      ${index === 0
                         ? 'bg-yellow-400 text-primary cursor-default hover:text-2xl hover:animate-pulse hover:bg-yellow-300'
                         : ''
-                    }`}
+                    }
+                    ${index  === 1
+                        ? 'bg-slate-300 text-primary cursor-default hover:text-2xl hover:animate-pulse hover:bg-slate-300'
+                        : ''
+                    }
+                    ${index  === 2
+                        ? 'bg-yellow-900 text-primary cursor-default hover:text-2xl hover:animate-pulse hover:bg-yellow-700'
+                        : ''
+                    }
+                    `}
                   >
                     {index + 1}
                   </span>
