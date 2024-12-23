@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LabelButton = ({ src, label, htmlFor,  ariaLabel, id='', className = '', onClick, alt = 'Button Modal' }) => {
+const LabelButton = ({ src, label, htmlFor,   ariaLabel, id='', className = '', onClick, alt = 'Button Modal' }) => {
   return (
     <label
       htmlFor={htmlFor}
@@ -9,6 +9,7 @@ const LabelButton = ({ src, label, htmlFor,  ariaLabel, id='', className = '', o
       className={`flex items-center justify-center gap-2 btn-neutral text-primary rounded-full font-bold ${className}`}
       onClick={onClick}
     >
+
       {src && <img src={src} alt={alt} className="p-1" />}
       {label}
     </label>

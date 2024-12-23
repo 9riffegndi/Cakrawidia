@@ -47,23 +47,23 @@ export default function HamburgerButton() {
                         className="dropdown-content menu bg-primary rounded-box z-[1] w-max p-2 shadow"
                     >
                         <ul className="flex items-end justify-end flex-col gap-2">
-                            <Link className="flex items-center bg-yellow-100 p-1 rounded-lg gap-1"
+                            
+                            <Link className="flex items-center justify-end w-full p-1 rounded-lg gap-1"
                                 to="/UsersLeaderboard"
-                            >
-                                <p>Leaderboard</p>
-                                <LabelButton
-                                    src="https://img.icons8.com/?size=100&id=ydwlBL9IcMJd&format=png&color=FAB005"
-                                    htmlFor="my_modal_6"
-                                    className="btn btn-sm bg-yellow-50 border-none btn-circle hid"
-                                />
+                                >
+                                
+                                <p className="text-[0.6rem] font-semibold">Leaderboard</p>
+                                <img className="w-[25px]" src="https://img.icons8.com/?size=100&id=ydwlBL9IcMJd&format=png&color=FAB005" />
+                            
                             </Link>
-                            <div className="flex items-center gap-1">
-                                <p>Ajukan</p>
+                            
+                            <div className="flex items-center justify-end  p-1 rounded-lg gap-1">
+                                <p className="text-[0.6rem] font-semibold">Ajukan pertanyaan </p>
                                 <LabelButton
                                     src="https://img.icons8.com/?size=100&id=Li1YuxryCXFK&format=png&color=FFFFFF"
                                     htmlFor="my_modal_6"
-                                    className="btn btn-sm btn-circle hid"
-                                />
+                                    className="btn btn-sm btn-circle ">
+                                </LabelButton>
                             </div>
                         </ul>
                     </div>
