@@ -77,8 +77,8 @@ export default function ModalQuestions() {
       return;
     }
 
-    if(title.length > 50) {
-      alert("Judul pertanyaan tidak boleh lebih dari 50 karakter.");
+    if(title.length > 20) {
+      alert("Judul pertanyaan tidak boleh lebih dari 20 karakter.");
       return;
     }
 
@@ -101,7 +101,7 @@ export default function ModalQuestions() {
 
   return (
     <>
-      <LabelButton label="MULAI BERTANYA!" htmlFor="my_modal_6" className="btn btn-xs hidden md:flex" />
+      <LabelButton label="MULAI BERTANYA!" htmlFor="my_modal_6" className="btn hidden md:flex" />
 
       <input type="checkbox" id="my_modal_6" className="modal-toggle" />
       <div className="modal" role="dialog">

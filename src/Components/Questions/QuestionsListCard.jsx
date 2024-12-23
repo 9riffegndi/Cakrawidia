@@ -15,6 +15,13 @@ const QuestionsListCard = ({ questions, users, searchQuery, onTopicSelect  }) =>
   const [sortBy, setSortBy] = useState("created_at"); // Menyimpan kriteria pengurutan (misalnya berdasarkan tanggal)
   const [sortOrder, setSortOrder] = useState("desc"); // Menyimpan urutan pengurutan (asc/desc)
 
+  const truncateText = (text, maxLength) => {
+    if (text.length > maxLength) {
+      return text.substring(0, maxLength) + "...";
+    }
+    return text;
+  };
+
   // Fungsi untuk menambah jumlah pertanyaan yang ditampilkan
   const loadMore = () => {
     setVisibleCount((prevCount) => prevCount + 10);
@@ -92,7 +99,7 @@ const QuestionsListCard = ({ questions, users, searchQuery, onTopicSelect  }) =>
             <div className="flex flex-col gap-3">
               <Link to={`/viewquestion/${question.id}`} className="flex flex-col gap-2 ">
                   <p className=" whitespace-pre-wrap break-words text-xs xs:text-xl hover:link font-bold ">{question.title}</p>
-                  <p className=" whitespace-pre-wrap break-words text-xs xs:text-xl min-h-[100px]">{question.content}</p>
+                  <p className=" whitespace-pre-wrap break-words text-xs xs:text-xl min-h-[100px]">{truncateText(question.content,100)}</p>
               </Link>
             </div>
 
