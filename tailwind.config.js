@@ -15,8 +15,12 @@ module.exports = {
         'xs': '320px', // Tambahkan breakpoint custom untuk 320px
       },
       colors: {
-        primary: '#FBFBFB',  // Warna primary
-        secondary: '#181C14',  // Warna secondary
+        primary: '#FBFBFB',
+        secondary: '#131112',
+        candleLight: '#FFF574',
+        darkInk: '#131112',
+        sonsBlue: '#00e1f3',
+        liliac: '#F5EFFF',
       },
     },
   },
@@ -24,6 +28,41 @@ module.exports = {
   plugins: [require('daisyui')],  // Daisy UI plugin
 
   daisyui: {
-    themes: false,  // Matikan tema bawaan DaisyUI
+    themes: [
+      "light",
+      "dark",
+      "cupcake",
+      "bumblebee",
+      "emerald",
+      "corporate",
+      "synthwave",
+      "retro",
+      "cyberpunk",
+      "valentine",
+      "halloween",
+      "garden",
+      "forest",
+      "aqua",
+      "lofi",
+      "pastel",
+      "fantasy",
+      "wireframe",
+      "black",
+      "luxury",
+      "dracula",
+      "cmyk",
+      "autumn",
+      "business",
+      "acid",
+      "lemonade",
+      "night",
+      "coffee",
+      "winter",
+      "dim",
+      "nord",
+      "sunset",
+    ]
   },
 };
+
+

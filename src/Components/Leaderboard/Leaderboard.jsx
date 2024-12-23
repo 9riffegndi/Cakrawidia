@@ -11,7 +11,6 @@ function Leaderboard({users, className=''}) {
   const increment = 5; // Jumlah item yang ditambahkan/dikurangi tiap klik
 
 
-
   const loadMore = () => {
     if (visibleCount < users.length) {
       setVisibleCount(visibleCount + increment);
@@ -26,14 +25,14 @@ function Leaderboard({users, className=''}) {
 
 
   return (
-    <div className={`col-span-12 md:col-span-3 sticky h-[350px]  flex flex-col justify-between  top-10  border-secondary border rounded-xl ${className}`}>
+    <div className={`col-span-12 md:col-span-3 sticky  h-max  flex flex-col justify-start top-10  border-secondary border rounded-xl ${className}`}>
       
       <div className="flex gap-1 bg-yellow-200 justify-start rounded-t-xl  p-2 items-center border-b border-secondary">
         <img className='w-[35px]' src="https://img.icons8.com/?size=100&id=9tHbFVbHMO7a&format=png&color=FAB005"/>
         <h1 className="font-bold ">Bintang Cakrawidia</h1>
       </div>
       
-      <ul className='flex flex-col w-full justify-start items-start rounded-b-xl color-scrollbar overflow-y-auto'> 
+      <ul className='flex flex-col w-full h-[200px] justify-start items-start rounded-b-xl color-scrollbar overflow-y-auto'> 
         <table className="flex flex-col ">
           {users.length === 0 && 
             <>
