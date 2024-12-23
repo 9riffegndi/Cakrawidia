@@ -1,3 +1,5 @@
+
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom"; 
 
@@ -8,17 +10,27 @@ import Hero from "../Hero/Hero";
 import { localeTime } from "../../Utils/localeTime";
 import dayjs from "dayjs";
 import { formatInitialsUsername } from "../../Utils/formatInitialUsername";
+import ModalQuestions from "./ModalQuestions";
+import HamburgerButton from "../Buttons/HamburgerButton";
 
 
 const QuestionsListCard = ({ questions, users, searchQuery, onTopicSelect  }) => {
-  const [visibleCount, setVisibleCount] = useState(5); // Menyimpan jumlah pertanyaan yang ditampilkan
+  // const [visibleCount, setVisibleCount] = useState(5); // Menyimpan jumlah pertanyaan yang ditampilkan
   const [sortBy, setSortBy] = useState("created_at"); // Menyimpan kriteria pengurutan (misalnya berdasarkan tanggal)
   const [sortOrder, setSortOrder] = useState("desc"); // Menyimpan urutan pengurutan (asc/desc)
 
   // Fungsi untuk menambah jumlah pertanyaan yang ditampilkan
-  const loadMore = () => {
-    setVisibleCount((prevCount) => prevCount + 10);
+  // const loadMore = () => {
+  //   setVisibleCount((prevCount) => prevCount + 10);
+  // };
+
+  const truncateText = (text, maxLength) => {
+    if (text.length > maxLength) {
+      return text.substring(0, maxLength) + "...";
+    }
+    return text;
   };
+  
 
   // Fungsi untuk mengubah kriteria dan urutan pengurutan
   const handleSortChange = (e) => {
@@ -51,58 +63,60 @@ const QuestionsListCard = ({ questions, users, searchQuery, onTopicSelect  }) =>
   );
 
 
-
-
   return (
-    <div className="rounded-xl  col-span-12 md:col-span-6 flex flex-col justify-center border border-secondary items-center">
-      <Hero /> {/* Menampilkan Hero banner */}
-      <div className="border-t-2 flex p-4 w-full justify-start">
+    <div className="rounded-xl md:h-[490px] h-[400px] col-span-12 md:col-span-6 flex flex-col justify-center border border-secondary items-center">
+      {/* <Hero /> */}
+      <div className=" flex p-3 w-full justify-between items-center gap-1 border-b border-secondary"> 
         {/* Dropdown untuk memilih urutan pengurutan */}
-        <select
-          onChange={handleSortChange}
-          value={`${sortBy}-${sortOrder}`}
-          className="select rounded-full select-bordered">
-          <option disabled selected className="font-bold">Urutkan</option>
-          <option value="created_at-desc">Terbaru</option>
-          <option value="created_at-asc">Terlama</option>
-          <option value="topic_name-asc">Topik (A-Z)</option>
-          <option value="topic_name-desc">Topik (Z-A)</option>
-        </select>
+          <select
+            onChange={handleSortChange}
+            value={`${sortBy}-${sortOrder}`}
+            className="select select-xs rounded-full select-bordered">
+            <option disabled selected className="font-bold">Urutkan</option>
+            <option value="created_at-desc">Terbaru</option>
+            <option value="created_at-asc">Terlama</option>
+            <option value="topic_name-asc">Topik (A-Z)</option>
+            <option value="topic_name-desc">Topik (Z-A)</option>
+          </select>
+          <ModalQuestions/>
+          <HamburgerButton/>
       </div>
-      {/* Menampilkan pertanyaan yang sudah difilter dan diurutkan */}
+      
+      {/* {/* Menampilkan pertanyaan yang sudah difilter dan diurutkan */}
+      <div className="carousel  carousel-vertical w-full pl-2 pr-2  h-full">
       {filteredQuestions.length > 0 ? (
-        filteredQuestions.slice(0, visibleCount).map((question) => (
-          <div key={question.id} className="w-full  flex flex-col justify-between border-b-2 min-h-[200px] gap-4 p-5">
-            <div className="flex gap-1 justify-start items-center">
-              <span className="btn btn-circle btn-neutral text-primary">
-                {formatInitialsUsername(users.find((user) => user.id === question.user_id).username)}
-              </span>
-              <button 
-                onClick={() => onTopicSelect(question.topic_name)} 
-                className="font-bold hidden xs:block text-xs hover:underline">
-                {question.topic_name}
-              </button>
-              <span>|</span>
-              <p className="font-bold hidden sm:block text-xs">
-                {localeTime(question.created_at)} {/* Menampilkan waktu relatif */}
-              </p>
+        filteredQuestions.slice(0,).map((question) => (
+          <div key={question.id} className="w-full  overflow-x-auto carousel-item h-full flex flex-col justify-start border-b-2 ">
+            
+            <div className="items-start justify-start flex flex-col gap-2">
+              <div className="flex pt-2 gap-1 justify-start items-center">
+                <span className="btn btn-circle btn-neutral text-primary">
+                  {formatInitialsUsername(users.find((user) => user.id === question.user_id).username)}
+                </span>
+                <button 
+                  onClick={() => onTopicSelect(question.topic_name)} 
+                  className="font-bold hidden xs:block text-xs hover:underline">
+                  {question.topic_name}
+                </button>
+                <span>|</span>
+                <p className="font-bold text-xs">
+                  {localeTime(question.created_at)} {/* Menampilkan waktu relatif */}
+                </p>
+              </div>
+              <div className="flex flex-col gap-3">
+                <Link to={`/viewquestion/${question.id}`} className="flex flex-col gap-2 ">
+                    <p className=" whitespace-pre-wrap break-words text-xs xs:text-xl hover:link font-bold  ">{question.title}
+                    </p>
+                    <p className=" whitespace-pre-wrap break-words text-xs xs:text-xl">{truncateText(question.content, 100)}</p>
+                </Link>
+              </div>
             </div>
-
-
-            <div className="flex flex-col gap-3">
-              <Link to={`/viewquestion/${question.id}`} className="flex flex-col gap-2 ">
-                  <p className=" whitespace-pre-wrap break-words text-xs xs:text-xl hover:link font-bold ">{question.title}</p>
-                  <p className=" whitespace-pre-wrap break-words text-xs xs:text-xl min-h-[100px]">{question.content}</p>
-              </Link>
-            </div>
-
-
-            <div className="flex w-full items-center  justify-between">
+            <div className="flex p-5 w-full items-center  justify-between">
               <div className="flex items-center gap-1">
                 {/* <p>{question.likes}</p> */}
               </div>
               <Link to={`/viewquestion/${question.id}`} >
-                <PrimaryButton label="Jawab" className="btn btn-xs bg-transparent text-secondary hover:text-primary" /> {/* Tombol jawab */}
+                <PrimaryButton label="Jawab" className="btn btn-sm  " /> {/* Tombol jawab */}
               </Link>
             </div>
 
@@ -116,18 +130,22 @@ const QuestionsListCard = ({ questions, users, searchQuery, onTopicSelect  }) =>
           </h1>
         </div>
       )}
+      </div>
       {/* Menampilkan tombol "Lihat semua" jika ada lebih banyak pertanyaan untuk ditampilkan */}
-      {visibleCount < filteredQuestions.length && (
-        <div className="flex justify-center items-center p-5">
+      {/* {visibleCount < filteredQuestions.length && (
+        <div className="flex bg-cyan-300 w-full justify-center items-center p-5">
           <PrimaryButton
             label={'Lihat lebih banyak'}
             className="btn btn-xs"
             onClick={loadMore}
           />
         </div>
-      )}
+      )} */}
     </div>
   );
 };
 
 export default QuestionsListCard;
+
+
+

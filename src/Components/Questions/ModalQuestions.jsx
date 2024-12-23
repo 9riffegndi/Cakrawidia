@@ -77,6 +77,16 @@ export default function ModalQuestions() {
       return;
     }
 
+    if(title.length > 50) {
+      alert("Judul pertanyaan tidak boleh lebih dari 50 karakter.");
+      return;
+    }
+
+    if (question.length > 150) {
+      alert("Pertanyaan tidak boleh lebih dari 150 karakter.");
+      return;
+    }
+
     // Ajukan pertanyaan
     const result = await postQuestion(selectedTopic, title, question, setLoading);
 
@@ -91,7 +101,7 @@ export default function ModalQuestions() {
 
   return (
     <>
-      <LabelButton label="MULAI BERTANYA!" htmlFor="my_modal_6" className="btn w-1/2" />
+      <LabelButton label="MULAI BERTANYA!" htmlFor="my_modal_6" className="btn btn-xs hidden md:flex" />
 
       <input type="checkbox" id="my_modal_6" className="modal-toggle" />
       <div className="modal" role="dialog">
@@ -112,6 +122,7 @@ export default function ModalQuestions() {
           >
           </Textarea>
 
+          
           <Textarea
             placeholder="Tulisl pertanyaanmu (simple & jelas lebih cepat terjawab)"
             value={question}

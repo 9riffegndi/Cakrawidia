@@ -13,7 +13,7 @@ import ViewQuestion from "./Pages/ViewQuestion";
 import Login from "./Pages/Auth/Login";
 import Register from "./Pages/Auth/Register";
 import ProfileMe from "./Pages/ProfileMe";
-
+import UsersLeaderboard  from "./Pages/UsersLeaderboard";
 
 const App = () => {
     return (
@@ -67,16 +67,26 @@ const App = () => {
                 />
 
                 <Route
-                path="/profileMe"
-                element={
+                    path="/profileMe"
+                    element={
                     <>
-                    <Helmet>
-                        <title>Profile - Cakrawidia</title>
-                    </Helmet>
-                    <ProfileMe />
-                    
+                        <Helmet>
+                            <title>Profile - Cakrawidia</title>
+                        </Helmet>
+                        <ProfileMe />
                     </>
                     
+                }
+                />
+                <Route
+                    path="/UsersLeaderboard"
+                    element={
+                    <>
+                        <Helmet>
+                            <title>Leaderboard - Cakrawidia</title>
+                        </Helmet>
+                        <UsersLeaderboard />
+                    </>
                 }
                 />
             </Routes>

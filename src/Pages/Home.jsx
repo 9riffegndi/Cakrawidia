@@ -16,7 +16,7 @@ import TopicsCategory from "../Components/Topics/TopicsCategory";
 import QuestionsListCard from "../Components/Questions/QuestionsListCard";
 import Leaderboard from "../Components/Leaderboard/Leaderboard";
 // Buttons
-import ToolipBtn from "../Components/Buttons/ToolipBtn";
+import HamburgerButton from "../Components/Buttons/HamburgerButton";
 
 // Services
 import { fetchUsers } from "../Services/leaderboardService";
@@ -96,9 +96,9 @@ export default function Home() {
           searchQuery={searchQuery}
         />
         {/* Kirim data users ke Leaderboard */}
-        <Leaderboard users={users} />
+        <Leaderboard users={users} className="md:block hidden" />
       </GridLayout>
-      <ToolipBtn />
+      <HamburgerButton />
       <Footer />
     </MainLayout>
   );
