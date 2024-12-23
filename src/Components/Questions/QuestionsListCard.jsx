@@ -107,7 +107,7 @@ const QuestionsListCard = ({ questions, users, searchQuery, onTopicSelect  }) =>
                 <Link to={`/viewquestion/${question.id}`} className="flex flex-col gap-2 ">
                     <p className=" whitespace-pre-wrap break-words text-xs xs:text-xl hover:link font-bold  ">{question.title}
                     </p>
-                    <p className=" whitespace-pre-wrap break-words text-xs xs:text-xl">{truncateText(question.content, 100)}</p>
+                    <p className=" whitespace-pre-wrap break-words text-xs xs:text-xl">{truncateText(question.content, 80)}</p>
                 </Link>
               </div>
             </div>
