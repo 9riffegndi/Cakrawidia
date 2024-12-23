@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 // Layouts
 import MainLayout from "../Layouts/MainLayout";
@@ -16,6 +17,7 @@ import TopicsCategory from "../Components/Topics/TopicsCategory";
 import QuestionsListCard from "../Components/Questions/QuestionsListCard";
 import Leaderboard from "../Components/Leaderboard/Leaderboard";
 // Buttons
+import ToolipBtn from "../Components/Buttons/ToolipBtn";
 
 // Services
 import { fetchUsers } from "../Services/leaderboardService";
@@ -95,8 +97,9 @@ export default function Home() {
           searchQuery={searchQuery}
         />
         {/* Kirim data users ke Leaderboard */}
-        <Leaderboard users={users} className="md:block hidden" />
+        <Leaderboard users={users} />
       </GridLayout>
+      <ToolipBtn />
       <Footer />
     </MainLayout>
   );
