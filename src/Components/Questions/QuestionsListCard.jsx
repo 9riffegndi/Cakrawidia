@@ -11,14 +11,14 @@ import { formatInitialsUsername } from "../../Utils/formatInitialUsername";
 
 
 const QuestionsListCard = ({ questions, users, searchQuery, onTopicSelect  }) => {
-  const [visibleCount, setVisibleCount] = useState(5); // Menyimpan jumlah pertanyaan yang ditampilkan
+  // const [visibleCount, setVisibleCount] = useState(5); // Menyimpan jumlah pertanyaan yang ditampilkan
   const [sortBy, setSortBy] = useState("created_at"); // Menyimpan kriteria pengurutan (misalnya berdasarkan tanggal)
   const [sortOrder, setSortOrder] = useState("desc"); // Menyimpan urutan pengurutan (asc/desc)
 
   // Fungsi untuk menambah jumlah pertanyaan yang ditampilkan
-  const loadMore = () => {
-    setVisibleCount((prevCount) => prevCount + 10);
-  };
+  // const loadMore = () => {
+  //   setVisibleCount((prevCount) => prevCount + 10);
+  // };
 
   // Fungsi untuk mengubah kriteria dan urutan pengurutan
   const handleSortChange = (e) => {
@@ -71,7 +71,7 @@ const QuestionsListCard = ({ questions, users, searchQuery, onTopicSelect  }) =>
       </div>
       {/* Menampilkan pertanyaan yang sudah difilter dan diurutkan */}
       {filteredQuestions.length > 0 ? (
-        filteredQuestions.slice(0, visibleCount).map((question) => (
+        filteredQuestions.slice(0).map((question) => (
           <div key={question.id} className="w-full  flex flex-col justify-between border-b-2 min-h-[200px] gap-4 p-5">
             <div className="flex gap-1 justify-start items-center">
               <span className="btn btn-circle btn-neutral text-primary">
@@ -117,7 +117,7 @@ const QuestionsListCard = ({ questions, users, searchQuery, onTopicSelect  }) =>
         </div>
       )}
       {/* Menampilkan tombol "Lihat semua" jika ada lebih banyak pertanyaan untuk ditampilkan */}
-      {visibleCount < filteredQuestions.length && (
+      {/* {visibleCount < filteredQuestions.length && (
         <div className="flex justify-center items-center p-5">
           <PrimaryButton
             label={'Lihat lebih banyak'}
@@ -125,7 +125,7 @@ const QuestionsListCard = ({ questions, users, searchQuery, onTopicSelect  }) =>
             onClick={loadMore}
           />
         </div>
-      )}
+      )} */}
     </div>
   );
 };
