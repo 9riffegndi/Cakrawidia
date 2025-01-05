@@ -1,36 +1,27 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
 
-export const useDeleteAcc = (authToken) => {
-    const [password, setPassword] = useState("");
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState("");
+import { useState } from 'react';
 
-    useEffect(() => {
-        if (!authToken) return;
+export function useDeleteAcc(authToken) {
+    const [error, setError] = useState(null);
 
-        const fetchProfile = async () => {
-            setIsLoading(true);
-            try {
-                const response = await axios({
-                    url: "https://cakrawidia-4ae06d46343e.herokuapp.com/api/me",
-                    method: "DELETE", // Assuming the "DEL" method was a typo
-                    headers: {
-                        Authorization: `Bearer ${authToken}`,
-                        "Content-Type": "application/json",
-                    },
-                });
+    const deleteAcc = async (password) => {
+        try {
+            const response = await fetch('https://cakrawidia-4ae06d46343e.herokuapp.com/api/me', {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${authToken}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ password }), // Send the password in the body
+            });
 
-                setPassword(response.data.user);
-            } catch (err) {
-                setError(err.response?.data?.message || err.message);
-            } finally {
-                setIsLoading(false);
-            }
-        };
+            // Handle successful deletion (e.g., logging out or redirecting)
+        } catch (error) {
 
-        fetchProfile();
-    }, [authToken]);
+            setError(error.message);
+            throw error; // Re-throw the error to handle it in the component
+        }
+    };
 
-    return { password, isLoading, error };
-};
+    return { deleteAcc, error };
+}
