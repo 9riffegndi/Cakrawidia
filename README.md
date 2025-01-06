@@ -1,4 +1,7 @@
-### Cakrawidia 
+
+### Techcomfest competition project
+## CAKRAWIDIA
+- platform QnA seputar pelajaran dan pengetahuan Umum
 ## **Persyaratan Sistem**  
 Pastikan sistem Anda telah menginstal:  
 - **C++ Redistributable Latest**  
